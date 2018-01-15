@@ -52,6 +52,7 @@ function createData () {
   let oneHourLater = new Date(now.getTime() + HOUR);
   let twoHoursLater = new Date(oneHourLater.getTime() + HOUR);
   let threeHoursLater = new Date(twoHoursLater.getTime() + HOUR);
+  let fourHoursLater = new Date(threeHoursLater.getTime() + HOUR);
 
   let eventsPromise = models.Event.bulkCreate([
     {
@@ -67,7 +68,7 @@ function createData () {
     {
       title: '🍨 Пробуем kefir.js',
       dateStart: threeHoursLater,
-      dateEnd: twoHoursLater
+      dateEnd: fourHoursLater
     }
   ]);
 

@@ -1,0 +1,109 @@
+.input { 
+	position: relative;
+    width: 100%;
+    vertical-align: top;   
+}
+.input__control::-ms-clear{
+	display: none;
+}
+.input_theme_normal .input__control {
+	color: #000;
+	letter-spacing: 0.47px;
+	font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
+}
+.input_theme_normal .input__control::placeholder {
+	color: #858e98;
+	letter-spacing: 0.47px;
+	font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
+}
+
+.input_theme_normal .input__control:focus {
+	border: 2px solid #007DFF;
+}
+
+.input_theme_normal .input__control:focus + .input__clear {
+	opacity: 1;
+}
+.input_theme_normal:hover .input__clear {
+	opacity: 1;
+}
+.input_size_md .input__control {
+	height: 44px;
+	width: 100%;
+	padding: 0 10px 0 10px;
+	font-size: 15px;
+	line-height: 17px;
+	border-radius: 4px;
+	border: 2px solid #e9ecef;
+}
+.input_actions_true .input__control {
+	padding-right: 44px;
+}
+
+.input_size_md .input__clear {
+	margin: 2px;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 3;
+	opacity: .43;
+	cursor: pointer;
+
+	display: none;
+}
+.input_size_md .input__chose-date {
+	margin: 2px;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 3;
+	opacity: .43;
+	cursor: pointer;
+
+	display: none;
+}
+
+.input_actions_true .input__clear,
+.input_actions_ture .input__date-chose {
+	display: inline-block;
+}
+
+@media (min-width: 1280px) {
+	
+	.input_theme_normal .input__control:focus {
+		border: 2px solid #007DFF;
+	} 
+	.input_theme_normal:hover .input__control {
+		border: 2px solid #007DFF;
+	}
+	.input_theme_normal:hover .input__control::placeholder {
+		font-size: 0;
+	}
+	.input_theme_normal .input__control:focus + .input__clear {
+		opacity: 1;
+	}
+	.input_theme_normal:hover .input__clear {
+		opacity: 1;
+	}
+	.input_size_md .input__control {
+		height: 38px;
+		font-size: 13px;
+		line-height: 15px;
+	}
+	.input_actions_true .input__control {
+		padding-right: 38px;
+	}
+	.input_size_md .input__clear {
+		width: 34px;
+		height: 34px;
+	}
+
+	.input_size_md .input__chose-date {
+		width: 34px;
+		height: 34px;
+	}
+}

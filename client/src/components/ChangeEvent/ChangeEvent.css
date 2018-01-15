@@ -1,0 +1,48 @@
+.change-meeting {
+
+}
+.change-meeting__editor {
+  margin: 0 auto;
+  margin-top: 24px;
+}
+
+.change-meeting__submit-bar {
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 80px;
+  border-top: 1px solid #E9ECEF;
+  background-color: #fff;
+}
+.change-meeting .new-meeting__button {
+  display: none;
+}
+.change-meeting__footer {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.change-meeting__button {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+@media (min-width: 1280px) {
+  .change-meeting__submit-bar {
+    display: none;
+  }
+  .submit-bar {
+    display: flex;
+  }
+  .change-meeting__footer {
+    display: flex;
+  }
+  .change-meeting__button {
+    margin-right: 8px;
+    margin-left: 8px;
+  }
+}

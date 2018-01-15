@@ -1,0 +1,18 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	height: 49px;
+	border-bottom: 1px solid #E9ECEF;
+}
+
+@media (min-width: 1280px) {
+  .header {
+    padding: 0 24px;
+    height: 71px;
+  }
+  .header__new-meeting-btn {
+    display: inline-block;
+  }
+}

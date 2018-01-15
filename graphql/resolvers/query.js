@@ -14,8 +14,8 @@ module.exports = {
     return models.Event.findAll({
       where: {
         dateStart: {
-          [Op.lt]: dateEnd,
-          [Op.gt]: dateStart
+          [Op.lte]: dateEnd,
+          [Op.gte]: dateStart
         }
       }
     });

@@ -52,6 +52,18 @@ module.exports = {
               return event.update(input);
             });
   },
+  updateEventData (root, { id, input, usersIds, roomId}, context) {
+    console.log(input, usersIds, roomId);
+    return models.Event.findById(id)
+            .then(event => {
+              return event.update(input);
+            }).then(event => {
+              event.setRoom(roomId);
+
+              return event.setUsers(usersIds)
+                    .then(() => event);
+            });
+  },
   addUserToEvent (root, { id, userId }, context) {
     return models.Event.findById(id)
             .then(event => {

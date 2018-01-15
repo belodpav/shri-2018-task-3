@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=cyrillic');
+
+*,
+*:after,
+*:before {
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #000;
+  font-size: 13px;
+  font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
+}

@@ -1,0 +1,50 @@
+.free-time-range {
+	height: 100%;
+	background-color: #fff;
+	//border-right: 1px solid  rgba(19,100,205,0.10);
+}
+
+.free-time-range__add {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	border-radius: 0;
+	display: flex;
+	
+}
+
+.free-time-range__add:active {
+	//background-color: #1D00FE;
+	background-color: #005CFF;
+}
+.free-time-range__plus-icon {
+	display: none;
+	width: 16px;
+	height: 16px;
+	margin: auto;
+}
+
+@media (min-width: 1280px) {
+	.free-time-range__add {
+		position: static;
+		max-width: 57px;
+		border-radius: 2px;
+		background-color: #2B50FD;
+		cursor: pointer;
+	}
+	.free-time-range__add {
+		max-width: 57px;
+		border-radius: 2px;
+	}
+	.free-time-range__add:active {
+		background-color: #1D00FE;
+	}
+	.free-time-range__plus-icon {
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin: auto;
+	}
+}

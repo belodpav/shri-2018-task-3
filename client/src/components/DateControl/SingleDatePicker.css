@@ -1,0 +1,63 @@
+.date-control .SingleDatePicker {
+  width: 100%;
+}
+.date-control .SingleDatePickerInput {
+  width: 100%;
+}
+
+.date-control .DateInput {
+  position: relative;
+  width: 100%;
+  vertical-align: top;   
+  
+}
+.date-control .DateInput_input {
+  display: inline-block;
+  height: auto;
+  width: 100%;
+  padding: 0;
+  font-size: 15px;
+  line-height: 18px;
+  border-radius: 0;
+  border: none;
+  color: #000;
+  letter-spacing: 0.47px;
+  font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+.date-control .CalendarMonth_caption {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.date-control .DateInput_input:hover,
+.date-control .DateInput_input:focus {
+  border: 0;
+}
+.date-control .DateInput_input__focused {
+  border: none;
+  color: #0070E0;
+}
+.date-control .SingleDatePickerInput__withBorder {
+  border: none;
+}
+
+.date-control .SingleDatePicker_picker {
+  box-shadow: 0 1px 8px 0 rgba(0,44,92,0.28);
+  border-radius: 4px;
+  top: 30px!important;
+}
+.date-control .DateInput_fang {
+  display: none;
+}
+.date-control .CalendarDay__selected, 
+.date-control .CalendarDay__selected:active, 
+.date-control .CalendarDay__selected:hover {
+    background: #0070e0;;
+    border: none;
+    color: #fff;
+}
+.date-control .DayPicker_weekHeader {
+    top: 56px;
+}
