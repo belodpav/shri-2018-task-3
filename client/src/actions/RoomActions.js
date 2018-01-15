@@ -62,7 +62,7 @@ function converToFloorList(roomsByFloor) {
       floors.push(+key);
     }
   }
-  floors.sort((a, b) => ( a - b ));
+  floors.sort((a, b) => ( b - a ));
   
   return floors;
 }
