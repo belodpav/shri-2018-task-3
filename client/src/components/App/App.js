@@ -10,8 +10,6 @@ import * as timeActions from './../../actions/TimeActions';
 import * as roomActions from './../../actions/RoomActions';
 import * as diagramActions from './../../actions/DiagramActions';
 
-//import moment from 'moment';
-
 import Home from '../Home/Home';
 import ChangeEvent from '../ChangeEvent/ChangeEvent';
 import NewEvent from '../NewEvent/NewEvent';
@@ -28,40 +26,22 @@ import 'moment/locale/ru.js';
 moment.locale('ru');
 
 class App extends Component {
-  handleClick() {
-    //const { getEvents } = this.props.eventActions;
-    
-    // const startRange = moment([2018, 0, 12, 8, 0, 0, 0]);
-    // const endRange = moment([2018, 0, 12, 23, 0, 0, 0]);
-    
-    // getEvents({start: startRange, end: endRange});
-    
-  }
-  currentTimeRun() {
-    const { updateCurrentTime } = this.props.timeActions;
-    this.timerId = setInterval( () => {
-      //updateCurrentTime(moment());
-    }, 1000);
-  }
-  componentDidMount() {
-    this.currentTimeRun();
+   componentDidMount() {
     const { getRooms } = this.props.roomActions;
     const date = moment();
     const startRange = moment([date.year(), date.month(), date.date(), 8, 0, 0, 0]);
     const endRange = moment([date.year(), date.month(), date.date(), 23, 0, 0, 0]);
     getRooms({dateStart: startRange, dateEnd: endRange});
 
-    this.handleClick();
-    
+    // App loaded. Let's remove welcome window
+    setTimeout( () => { 
+      const welcomeWindow = document.getElementById('welcome');
+      welcomeWindow.className +=' welcome_state_hidden';
+    }, 2000);
+      
   }
-  /*componentWillMount() {
-    const { getDiagramData } = this.props.diagramActions;
-    const {events} = this.props.events;
-    getDiagramData(events);
-  }*/
 
   componentWillUnmount() {
-    clearInterval(this.timerId);
   }
   render() {
     
