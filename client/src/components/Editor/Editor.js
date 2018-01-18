@@ -20,7 +20,6 @@ import { RoomItemCurrent, RoomItem } from '../RoomItem/RoomItem';
 
 import InputText from '../Input/InputText';
 import InputDate from '../Input/InputDate';
-import InputTime from '../Input/InputTime';
 import InputAutocomplete from '../Input/InputAutocomplete';
 import Button from '../Button/Button';
 
