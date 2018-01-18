@@ -29,7 +29,6 @@ export function createEvent(event) {
 				}
 			}
 		`;
-		console.log(query);
 
 		fetch(url, 
 					{
@@ -62,7 +61,6 @@ export function createEvent(event) {
 				const eventsByRoomId = toListByRoom(events);*/
 				
 				// Dispatch GET_EVENTS_SUCCESS
-				console.log(response.data);
 				dispatch({
 					type: types.POST_EVENT_SUCCESS
 				});
@@ -106,7 +104,6 @@ export function removeEvent(event) {
 				}
 			}
 		`;
-		console.log(query);
 
 		fetch(url, 
 					{
@@ -175,7 +172,6 @@ export function updateEvent(event) {
 				}
 			}
 		`;
-		console.log(query);
 
 		fetch(url, 
 					{

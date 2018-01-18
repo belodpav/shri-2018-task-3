@@ -1,6 +1,7 @@
 import moment from 'moment';
 
-export function getRecomendation(eventId, timeStart, timeEnd, members, rooms, events) {
+export function getRecomendation(data) {
+  const { eventId, timeStart, timeEnd, members, rooms, events } = data;
   let usersSumWay = 0;
   let roomsAvailable;
   let recomendations = [];
@@ -16,8 +17,8 @@ export function getRecomendation(eventId, timeStart, timeEnd, members, rooms, ev
   return recomendations;
 }
 
-export function getRecomendation__2(eventId, timeStart, timeEnd, members, rooms, events) {
-
+export function getRecomendation__2(data) {
+  const { eventId, timeStart, timeEnd, members, rooms, events } = data;
   let eventsCross = getEventsCrossTimeRange(eventId, timeStart, timeEnd, members, rooms, events);
   let eventsByRoom = toListByRoom(eventsCross);
   let unCrossedRoomsPairs = getUnCrossedRooms(rooms, eventsByRoom);

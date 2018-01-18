@@ -3,16 +3,38 @@
 	justify-content: space-between;
 	align-items: center;
 }
-.date-control__date {
+/*.date-control__date {
   flex: 1;
 	font-size: 15px;
 	line-height: 18px;
 	color: #000;
 	font-weight: 500;
   display: flex;
+}*/
+.date-control__date {
+   position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0; 
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
 }
-.date-control__relative-date {
-
+.date-control__date-calendar {
+  width: auto;
+  max-width: 150px;
+  flex: 1;
+  position: relative;
+}
+/*.date-control__date {
+  
   width: 50%;
   display: inline-block;
   font-size: 15px;
@@ -21,4 +43,4 @@
   letter-spacing: 0.47px;
   font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
    display: none;
-}
+}*/

@@ -342,27 +342,20 @@ class Editor extends Component {
 				title
 			} = this.props;
 			let recoms = [];
-	if (!this.state.room.id && !this.state.dateStart.isSame(this.state.dateEnd)
-												  && this.state.dateStart.isBefore(this.state.dateEnd)) {
-	recoms = getRecomendation(
-		 this.props.event.id || -99,
-		 this.state.dateStart,
-		 this.state.dateEnd,
-		 this.state.members,
-		 this.props.rooms,
-		 this.props.events);
-
-		 if (!recoms.length) {
-		 	recoms = getRecomendation__2(
-		 this.props.event.id || -99,
-		 this.state.dateStart,
-		 this.state.dateEnd,
-		 this.state.members,
-		 this.props.rooms,
-		 this.props.events);
-		 }
-
+		const data = {
+			eventId: this.props.event.id || -99,
+			timeStart: this.state.dateStart,
+			timeEnd: this.state.dateEnd,
+			members: this.state.members,
+			rooms: this.props.rooms,
+			events: this.props.events
+		};
+	if (!this.state.room.id && !dateStart.isSame(dateEnd) && dateStart.isBefore(dateEnd)) {
+		recoms = getRecomendation(data);
+		if (!recoms.length) {
+			 	recoms = getRecomendation__2(data);
 		}
+	}
 
 		return (
 		<div>

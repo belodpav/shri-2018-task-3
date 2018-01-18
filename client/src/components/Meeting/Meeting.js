@@ -26,7 +26,7 @@ class Meeting extends Component {
         classN = 'tooltip_pos_top';
       }
       if (left + 338 / 2 >= viewPortWidth) {
-        left = viewPortWidth - 338/2 - (2.1*viewPortWidth/100 );
+        left = viewPortWidth - 338/2 - (1.9*viewPortWidth/100 );
         triangleLeft = 'calc(' + '50% + ' + (338/2 - this.box.offsetWidth / 2) + 'px)';
       }
     } else {

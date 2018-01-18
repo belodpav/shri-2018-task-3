@@ -1,7 +1,6 @@
 .room-row {
 	min-width: 1280px;
 	width: 100vw;
-	//height: 44px;
 	height: 58px;
 	display: flex;
 	align-items: center;
@@ -9,7 +8,6 @@
 .room-row__aside {
 	height: 100%;
 	width: 181px;
-	//padding-left: 25px;
 	padding-left: 16px;
 	display: flex;
 	flex-direction: column;
@@ -58,8 +56,7 @@
  
 .room-row__main {
 	background-color: #D5DFE9;
-    width: calc(100% - 181px);
-	//height: 28px;
+  width: calc(100% - 181px);
 	height: 100%;
 	position: relative;
 	
@@ -101,15 +98,9 @@
 .room-row__timegrid_layer_2 {
 	z-index: 100;
 }
-/*.room-row__timegrid_layer_2:hover {
-	opacity: 1;
-} */
 .room-row__timegrid_layer_2 {
 	opacity: 1;
 } 
-/*.room-row__timegrid_layer_2 .meeting, .room-row__timegrid_layer_2 .free-time-range {
-	opacity: 0;
-}*/
 .room-row__timegrid_layer_2 .meeting {
 	opacity: 0;
 }
@@ -117,10 +108,6 @@
 	opacity: 1;
 	background-color: transparent;
 }
-/* .room-row__timegrid_layer_2 .meeting:hover, .room-row__timegrid_layer_2 .free-time-range:hover {
-	opacity: 1;
-} */
-
 
 .room-row__timegrid_layer_2 .meeting:active,
 .room-row__timegrid_layer_2 .free-time-range__add:active {
@@ -166,11 +153,6 @@
 		left: 0;
 		top: 0;
 	}
-	.room-row__timegrid_layer_2 .free-time-range {
-		background-color: #fff;
-	}
-
-
 	.room-row__timegrid_layer_2:hover {
 		opacity: 1;
 	}

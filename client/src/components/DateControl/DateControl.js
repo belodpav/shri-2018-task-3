@@ -43,13 +43,31 @@ class DateControl extends Component {
     if (viewPortWidth >= 1280) return 3;
     return 1;
   }
+  getDayItemWidth() {
+    const viewPortWidth = window.innerWidth;
+    if (viewPortWidth >= 1280) return 24;
+    return 36;
+  }
+  componentWillMount() {
+
+  }
 
 	render() {
+    const { date } = this.props.date;
+    let dateStr = date.calendar(null, {
+        sameDay: 'D MMM · [Сегодня]',
+        nextDay: 'D MMM · [Завтра]',
+        nextWeek: 'D MMM · dd',
+        lastDay: 'D MMM · [Вчера]',
+        lastWeek: 'D MMM · dd',
+        sameElse: 'D MMM · dd'
+    }).replace(/\./,'');
+
     const {className} = this.props;
     return (
   		<div className={"date-control " + (className ? className : "")}>
   			<CircleButtonLeft onClick={this.handleLeftClick} />
-  			 <div className="date-control__date" >
+  			 <div className="date-control__date-calendar" >
           <SingleDatePicker
             date={this.props.date.date}
             onDateChange={this.props.dateActions.setDate}
@@ -60,10 +78,10 @@ class DateControl extends Component {
             isOutsideRange={() => false}
             readOnly={true}
             hideKeyboardShortcutsPanel={true}
+            enableOutsideDays={false}
+            daySize={this.getDayItemWidth()}
           />
-          <span className="date-control__relative-date">
-          &nbsp;&middot;&nbsp;Сегодня
-          </span>
+          <span className="date-control__date">{dateStr}</span>
           </div>
           	<CircleButtonRight onClick={this.handleRightClick} />
   		</div>

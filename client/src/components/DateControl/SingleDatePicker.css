@@ -12,6 +12,10 @@
   
 }
 .date-control .DateInput_input {
+   position: relative;
+  z-index: 10;
+  opacity: 0;
+
   display: inline-block;
   height: auto;
   width: 100%;
@@ -27,7 +31,7 @@
   cursor: pointer;
   text-align: center;
 }
-.date-control .CalendarMonth_caption {
+.CalendarMonth_caption {
     font-weight: 600;
     text-transform: capitalize;
 }
@@ -58,6 +62,60 @@
     border: none;
     color: #fff;
 }
-.date-control .DayPicker_weekHeader {
+.DayPicker_weekHeader {
     top: 56px;
+}
+
+.CalendarDay__default:hover,
+.CalendarDay__default {
+  border: none;
+}
+
+.CalendarDay__default {
+  border-radius: 100%;
+  font-size: 12px;
+  color: #333;
+  font-weight: 600; 
+}
+
+.CalendarMonth_caption {
+  color: #565a5c;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 37px;
+  caption-side: initial;
+}
+
+.DayPickerNavigation_button__default,
+.DayPickerNavigation_button__default:hover {
+  border: none;
+  background-color: #fff;
+  color: #757575;
+}
+
+.CalendarDay__selected {
+  color: #fff;
+}
+
+.DayPickerNavigation_leftButton__horizontal {
+  left: 10px;
+}
+.DayPickerNavigation_rightButton__horizontal {
+  right: 10px;
+}
+
+.SingleDatePicker_picker {
+  transform: translate(-50%, 0);
+  left: 50%!important;
+}
+@media (min-width: 1280px) {
+  .SingleDatePicker_picker {
+    transform: translate(0, 0);
+    left: 0!important;
+  }
+  .date-control .SingleDatePicker_picker {
+    transform: translate(0, 0);
+    left: -24px!important;
+  }
 }

@@ -2,7 +2,7 @@
   background: transparent;
   width: 100%;
   z-index: 5;
-}
+} 
 .SingleDatePickerInput {
   background: transparent;
   width: 100%;
@@ -41,12 +41,22 @@
   border: none;
 }
 
-.SingleDatePicker_picker {
+.editor .SingleDatePicker_picker {
   box-shadow: 0 1px 8px 0 rgba(0,44,92,0.28);
   border-radius: 4px;
+  top: 100%!important;
 }
 .DateInput_fang {
   display: none;
+}
+
+.DayPicker_weekHeader {
+    top: 56px;
+}
+.CalendarDay__blocked_out_of_range,
+.CalendarDay__blocked_out_of_range:active,
+.CalendarDay__blocked_out_of_range:hover {
+  color: #999;
 }
 .CalendarDay__selected, 
 .CalendarDay__selected:active, 
@@ -54,9 +64,6 @@
     background: #0070e0;;
     border: none;
     color: #fff;
-}
-.DayPicker_weekHeader {
-    top: 56px;
 }
 
 @media (min-width: 1280px) {

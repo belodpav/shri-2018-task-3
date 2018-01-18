@@ -9,7 +9,6 @@ export function getDiagramData() {
     const eventsByRoomId = getState().events.events;
     const rooms = getState().rooms.rooms;
 
-
     rooms.forEach( room => {
       const key = room.id;
       let roomDiagram, roomEvents;
@@ -19,8 +18,9 @@ export function getDiagramData() {
       } else {
         roomEvents = [];
       }
-      
+
       roomDiagram = getRoomDiagram(room, date, roomEvents);
+
       diagram[key] = roomDiagram;
     });
 
@@ -32,6 +32,57 @@ export function getDiagramData() {
 }
 
 
+function getSlot(event, width) {
+  return {
+    event: event,
+    width: width
+  }
+}
+
+
+function getFreeSlots(dateStart, dateEnd, room) {
+  const freeSlots = [];
+  let oldStart = dateStart.clone();
+  let newStart = dateStart.clone();
+  let event, width;
+
+  newStart.add(1,'hour');
+  newStart.set('minute',0);
+
+  while(newStart.isBefore(dateEnd)) {
+    event = getFreeEvent(oldStart, newStart, room);
+    width = getWidth(oldStart, newStart);
+
+    freeSlots.push(getSlot( event, width ));
+  
+    oldStart = newStart.clone();
+    newStart.add(1,'hour');
+  }
+
+  event = getFreeEvent(oldStart, dateEnd, room);
+  width = getWidth(oldStart, dateEnd);
+
+  freeSlots.push(getSlot( event, width ));
+
+  return freeSlots;
+}
+
+function getFreeEvent(dateStart, dateEnd, room) {
+  return {
+    title: '',
+    dateStart: dateStart.clone(),
+    dateEnd: dateEnd.clone(),
+    room: room,
+    users: []
+  }
+}
+
+function getWidth(dateStart, dateEnd) {
+  const start = normalize(TIME_START, TIME_END, dateStart);
+  const end = normalize(TIME_START, TIME_END, dateEnd);
+
+  return end - start;
+}
 
 function normalize(min, max, x) {
   const hours = x.hour() - min;
@@ -44,70 +95,30 @@ function getRoomDiagram(room, date, events) {
   let timeRanges = [];
   let lastEnd = moment([date.year(), date.month(), date.date(), 8, 0, 0, 0]);
   const dayEnd = moment([date.year(), date.month(), date.date(), 23, 0, 0, 0]);
+  let start, end, width;
 
-  let start, end;
   if (events.length === 0) {
-    timeRanges.push(
-        {
-          event: {
-            title: '',
-            dateStart: lastEnd,
-            dateEnd: dayEnd,
-            room: room,
-            users: []
-          },
-          width: 100
-        }
-    );
+    timeRanges.push(...getFreeSlots( lastEnd, dayEnd, room ));
     return timeRanges;
   }
+
   events.forEach( event => {
-    start = normalize(TIME_START, TIME_END, lastEnd);
-    end = normalize(TIME_START, TIME_END, event.dateStart);
-    if (end > start) {
-      timeRanges.push(
-        {
-          event: {
-            title: '',
-            dateStart: lastEnd,
-            dateEnd: event.dateStart,
-            room: room,
-            users: []
-          },
-          width: end - start
-        }
-      );
+    width = getWidth(lastEnd, event.dateStart);
+
+    if (width > 0) {
+      timeRanges.push(...getFreeSlots( lastEnd, event.dateStart, room ));
     }
 
-    start = end;
-    end = normalize(TIME_START, TIME_END, event.dateEnd);
-
-    timeRanges.push(
-      {
-        event: event,
-        width: end - start
-      }
-    );
+    width = getWidth(event.dateStart, event.dateEnd);
+    timeRanges.push(getSlot( event, width ));
 
     lastEnd = event.dateEnd;
   });
 
-  start = normalize(TIME_START, TIME_END, lastEnd);
-  end = normalize(TIME_START, TIME_END, dayEnd);
+  width = getWidth(lastEnd, dayEnd);
 
-  if (start < end) {
-    timeRanges.push(
-      {
-        event: {
-          title: '',
-          dateStart: lastEnd,
-          dateEnd: dayEnd,
-          room: room,
-          users: []
-        },
-        width: end - start
-      }
-    );
+  if (width > 0) {
+    timeRanges.push(...getFreeSlots( lastEnd, dayEnd, room ));
   }
 
   return timeRanges;
