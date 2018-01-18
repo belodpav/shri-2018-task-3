@@ -15,6 +15,10 @@ import Button from '../Button/Button';
 import Editor from '../Editor/Editor';
 
 class NewEvent extends Component {
+  handleUpdateChangedEvents(event) {
+    const { updateEvent } = this.props.eventActions;
+    updateEvent(event);
+  }
 	handleCreateEvent(event) {
 		console.log(event);
 		const { createEvent } = this.props.eventActions;
@@ -41,6 +45,7 @@ class NewEvent extends Component {
 						rooms={this.props.rooms.rooms}
 						onCancle={openHomePage}
 						onCreateEvent={this.handleCreateEvent.bind(this)}
+            onUpdateChangedEvents={this.handleUpdateChangedEvents.bind(this)}
 					>
 					</Editor>
 				</div>

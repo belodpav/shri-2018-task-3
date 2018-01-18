@@ -41,12 +41,8 @@ class App extends Component {
       
   }
 
-  componentWillUnmount() {
-  }
   render() {
     
-  
-
     const { page } = this.props.page;
     let appChild;
 

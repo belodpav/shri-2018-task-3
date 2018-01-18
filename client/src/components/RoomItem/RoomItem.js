@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 
 import './RoomItem.css';
 
-const RoomItem = ({onSetRoom, timeStart, timeEnd, room}) => {
+const RoomItem = ({onSetRoom, onUpdateEvents, changedEvents, timeStart, timeEnd, room}) => {
   function handleClick() {
+    
+    if (onUpdateEvents && changedEvents) {
+      onUpdateEvents(changedEvents);
+    }
     onSetRoom(room);
   }
   return (

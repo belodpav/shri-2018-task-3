@@ -32,4 +32,14 @@ const IconCalendar = ({onClick, className}) => {
 	);
 }
 
-export {IconArrowLeft, IconArrowRight, IconClose, IconCalendar, IconEdit};
+const Icon = (props) => {
+	const { className, onClick } = props;
+
+	return (
+		<span className={className} onClick={onClick} />
+	);
+};
+
+export {IconArrowLeft, IconArrowRight, IconClose, IconCalendar, IconEdit, Icon};
+
+

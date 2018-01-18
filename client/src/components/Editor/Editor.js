@@ -24,10 +24,13 @@ import InputTime from '../Input/InputTime';
 import InputAutocomplete from '../Input/InputAutocomplete';
 import Button from '../Button/Button';
 
-import getRecomendation from '../../scripts/getRecomendation.js';
+//import getRecomendation from '../../scripts/getRecomendation.js';
+import { getRecomendation, getRecomendation__2 } from '../../scripts/getRecomendation__process.js';
 
 import moment from 'moment';
 import 'moment/locale/ru.js';
+
+import TimePickerContainer from '../../containers/TimePickerContainer/TimePickerContainer';
 
 moment.locale('ru');
 
@@ -63,7 +66,8 @@ class Editor extends Component {
 			peopleAvailable: getAvailablePeople(users, event.users),
 			members: event.users,
 			room: event.room,
-			validateMessage: ''
+			validateMessage: '',
+			changedEvents: []
 		}
 
 
@@ -82,6 +86,18 @@ class Editor extends Component {
 		this.handleCancel = this.handleCancel.bind(this);
 		this.handleRemoveButton = this.handleRemoveButton.bind(this);
 		this.handleOk = this.handleOk.bind(this);
+		this.handleUpdateEvents = this.handleUpdateEvents.bind(this);
+	}
+
+	handleUpdateEvents(changedEvents) {
+		if (changedEvents.length) {
+			this.setState({changedEvents: changedEvents});
+		} else {
+			this.setState({changedEvents: []})
+		}
+		console.log('----------');
+		console.log(changedEvents);
+		
 	}
 
 	handleOk() {
@@ -131,6 +147,12 @@ class Editor extends Component {
 			users: this.state.members,
 			room: this.state.room
 		};
+
+		const changedEvents = this.state.changedEvents;
+		changedEvents.forEach( event => {
+			this.props.onUpdateChangedEvents(event);
+		});
+
 		this.props.onCreateEvent(event);
 		// Change it
 		this.setState({isModalCreate: true});
@@ -144,6 +166,13 @@ class Editor extends Component {
 			users: this.state.members,
 			room: this.state.room
 		};
+
+		/*const changedEvents = this.state.changedEvents;
+		changedEvents.forEach( event => {
+			this.props.onSaveEvent(event);
+		});*/
+
+		
 		this.props.onSaveEvent(event);
 	}
 	handleClearRoom() {
@@ -170,7 +199,14 @@ class Editor extends Component {
 		this.setState({
 			members: [...this.state.members, value],
 			peopleAvailable: peopleAvailableNew
-		})
+		});
+		console.log('yyy',this.state.members + 1, this.state.room.capacity);
+		if (this.state.room.capacity && (this.state.members.length + 1 > this.state.room.capacity)) {
+			this.setState({
+				room: {}
+			});
+		}
+		
 	}
 	handleDeleteClick(value) {
 		const membersNew = this.state.members.filter( person => 
@@ -182,18 +218,71 @@ class Editor extends Component {
 		})
 	}
 	handleChangeDateStart(value) {
-		this.setState({
-			dateStart: value,
-			room: {}
-		});
+		const dStart = this.state.dateStart;
+		const dEnd = this.state.dateEnd;
+
+		const list = value.split(':');
+		const hour = +list[0];
+		const minutes = +list[1];
+
+		const dateStartSettings = [
+				dStart.get('year'),
+				dStart.get('month'),
+				dStart.get('date'),
+				hour,
+				minutes,
+				0
+		];
+		const date = moment(dateStartSettings);
+
+		if (date.hour() === dStart.hour() && date.minutes() === dStart.minutes()) {
+			return;
+		}
+
+		if (dEnd.isBefore(date)) {
+			this.setState({
+				dateEnd: date.clone().add(15, 'minutes'),
+				dateStart: date,
+				room: {}
+			});
+		} else {
+			this.setState({
+				dateStart: date,
+				room: {}
+			});
+		}
+		
 
 	}
 	handleChangeDateEnd(value) {
+		const dStart = this.state.dateStart;
+		const dEnd = this.state.dateEnd;
+
+		const list = value.split(':');
+		const hour = +list[0];
+		const minutes = +list[1];
+
+		const dateEndSettings = [
+				dEnd.get('year'),
+				dEnd.get('month'),
+				dEnd.get('date'),
+				hour,
+				minutes,
+				0
+		];
+		const date = moment(dateEndSettings);
+
+		if (date.hour() === dEnd.hour() && date.minutes() === dEnd.minutes()) {
+			return;
+		}
+
+		if (date.isBefore(dStart)) {
+			date.add(15, 'minutes');
+		}
 		this.setState({
-			dateEnd: value,
+			dateEnd: date,
 			room: {}
 		});
-
 	}
 	handleDateChange(value) {
 		const oldDateStart = this.state.dateStart,
@@ -247,6 +336,7 @@ class Editor extends Component {
 		
 	}
 	render() {
+		const { dateStart, dateEnd } = this.state;
 		const {
 				className,
 				title
@@ -261,6 +351,17 @@ class Editor extends Component {
 		 this.state.members,
 		 this.props.rooms,
 		 this.props.events);
+
+		 if (!recoms.length) {
+		 	recoms = getRecomendation__2(
+		 this.props.event.id || -99,
+		 this.state.dateStart,
+		 this.state.dateEnd,
+		 this.state.members,
+		 this.props.rooms,
+		 this.props.events);
+		 }
+
 		}
 
 		return (
@@ -283,20 +384,24 @@ class Editor extends Component {
 							/>
 						</EditorItemDate>
 						<EditorItemTime label="Начало">
-							<InputTime
-								date={this.state.dateStart}
-								onChange={this.handleChangeDateStart}
-							/>
+							<TimePickerContainer
+					        value={dateStart.format('HH:mm')}
+					        onChange={this.handleChangeDateStart}
+					        minTime='08:00'
+					        maxTime='22:45'
+					    />
 						</EditorItemTime>
 						<div className="editor__item_touch_no-label">
 							<label className="editor__label">&nbsp;</label>
 							<div className="editor__item-time-dash">&mdash;</div>
 						</div>
 						<EditorItemTime label="Конец">
-							<InputTime 
-								date={this.state.dateEnd}
-								onChange={this.handleChangeDateEnd}
-							/>
+							<TimePickerContainer
+					        value={dateEnd.format('HH:mm')}
+					        onChange={this.handleChangeDateEnd}
+					        minTime={dateStart.clone().add(15,'minutes').format('HH:mm')}
+					        maxTime='23:00'
+					    />
 						</EditorItemTime>
 					</EditorItem>
 					<EditorItem className="editor__item_space_bottom" label="Участники">
@@ -337,6 +442,8 @@ class Editor extends Component {
 													timeEnd={this.state.dateEnd.format('HH:mm')}
 													room={room}
 													onSetRoom={this.handleSetRoom}
+													onUpdateEvents={this.handleUpdateEvents}
+													changedEvents={item.changedEvents}
 												/>
 							})
 						}
@@ -373,7 +480,7 @@ class Editor extends Component {
 				<ModalCreate
 							onOk={this.handleOk}
 							date={this.state.dateStart.format('D MMMM')}
-							timeRange={this.state.dateStart.format('HH:mm') + '—' + this.state.dateStart.format('HH:mm')}
+							timeRange={this.state.dateStart.format('HH:mm') + '—' + this.state.dateEnd.format('HH:mm')}
 							roomTitle={this.state.room.title}
 							roomFloor={this.state.room.floor}
 				/>

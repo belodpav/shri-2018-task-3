@@ -1,0 +1,131 @@
+.text-input { 
+  position: relative;
+  width: 100%;
+  vertical-align: top;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px #e9ecef;
+  height: 44px;  
+  border-radius: 4px;
+}
+.text-input__control::-ms-clear{
+  display: none;
+}
+.text-input__control {
+  color: #000;
+  letter-spacing: 0.47px;
+  font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
+  width: 100%;
+  height: 44px;
+  padding: 0 10px 0 10px;
+  font-size: 15px;
+  line-height: 17px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+}
+.text-input__control::placeholder {
+  color: #858e98;
+  letter-spacing: 0.47px;
+  font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
+}
+
+.text-input_focused_true {
+  box-shadow: inset 0 0 0 2px #007DFF;
+}
+.text-input_focused_true .text-input__clear {
+  opacity: 1;
+}
+.text-input_hovered_true .text-input__clear {
+  opacity: 1;
+}
+.text-input_actions_true .text-input__control {
+  padding-right: 44px;
+}
+
+.text-input__clear {
+  margin: 2px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  opacity: .43;
+  cursor: pointer;
+
+  display: none;
+}
+.text-input__chose-date {
+  margin: 2px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  opacity: .43;
+  cursor: pointer;
+
+  display: none;
+}
+
+.text-input_actions_true .text-input__clear,
+.text-input_actions_ture .text-input__date-chose {
+  display: inline-block;
+}
+
+.text-input__clear {
+  margin: 2px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  opacity: .43;
+  cursor: pointer;
+  display: none;
+}
+.text-input__clear_visible_true {
+  display: block;
+}
+
+@media (min-width: 1280px) {
+  .text-input,
+  .text-input__control {
+    height: 38px;
+  }
+  .text-input__control {
+    font-size: 13px;
+    line-height: 15px;
+  }
+  .text-input_focused_true {
+    box-shadow: inset 0 0 0 2px #007DFF;
+  } 
+  .text-input_hovered_true {
+    box-shadow: inset 0 0 0 2px #007DFF;
+  }
+  .text-input_hovered_true .text-input__control::placeholder {
+    font-size: 0;
+  }
+   .text-input_focused_true + .text-input__clear {
+    opacity: 1;
+  }
+  .text-input_hovered_true .text-input__clear {
+    opacity: 1;
+  }
+  
+  .text-input_actions_true .text-input__control {
+    padding-right: 38px;
+  }
+  .text-input__clear {
+    width: 34px;
+    height: 34px;
+  }
+
+  .text-input__chose-date {
+    width: 34px;
+    height: 34px;
+  }
+}
