@@ -87,7 +87,7 @@
   cursor: pointer;
   display: none;
 }
-.text-input__clear_visible_true {
+.text-input_has-clear_true .text-input__clear_visible_true {
   display: block;
 }
 

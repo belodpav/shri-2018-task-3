@@ -1,91 +1,74 @@
 
-.app {
+.home {
   width: 100%;
   height: calc(100vh - 49px);
-  //min-height: 400px;
   overflow-x: auto;
   overflow-y: hidden;
-  //padding-top: 41px;
   position: fixed;
   scroll-behavior: smooth;
 }
-.app__header {
+.home__header {
   width: 100%;
 }
-.app__date-control {
-  //padding: 0 24px;
+.home__date-control {
   padding: 0 16px;
   width: 100vw;
   height: 57px;
   border-bottom: 1px solid #E9ECEF;
-  
   position: fixed;
   top: 49px;
   left: 0;
   z-index: 10000000;
-
 }
-.app__time {
+.home__time {
   padding-top: 57px;
   top: 0px;
   left: 0;
   z-index: 10;
-
   width: 100%;
   min-width: 1280px;
   display: flex;
-
   position: absolute;
   height: 89px;
   background-color: #fff;
   border-bottom: 1px solid #E9ECEF;
-
-    top: 0;
-
+  top: 0
 }
-.app__time:before,
-.app__time:after {
+.home__time:before,
+.home__time:after {
     content: '';
     display: table;
 }
-.app__body {
+.home__body {
   display: flex;
   height: calc(100% - 89px);
   width: 100%;
-    min-width: 1280px;
-  
+  min-width: 1280px;
   overflow-y: auto;
-
   background-color: #F6F7F9;
   margin-top: 89px;
-
 }
-.app__aside {
+.home__aside {
   width: 181px;
   height: 100%;
 }
-
-.app__timegrid,
-.app__timeline {
+.home__timegrid,
+.home__timeline {
   width: calc(100% - 181px);
   min-width: 1099px;
 }
-
-.app__timegrid {
+.home__timegrid {
   height: 100%;
   background-color: #F6F7F9;
-
 }
-.app__rooms {
+.home__rooms {
   border-right: 1px solid #E9ECEF;
 }
-
-.app__timeline .timegrid__column,
-.app__timeline .timegrid__column:first-of-type {
+.home__timeline .timegrid__column,
+.home__timeline .timegrid__column:first-of-type {
   border: none;
 }
-
-.app__content {
+.home__content {
   min-width: 1280px;
   width: 100%;
   height: calc(100% - 89px);
@@ -99,12 +82,11 @@
   padding-bottom: 50px;
 }
 
-
 @media (min-width: 1280px) {
-  .app {
+  .home {
     height: calc(100vh - 71px);
   }
-  .app__date-control {
+  .home__date-control {
     padding: 0 24px;
     width: 100%;
     height: 100%;
@@ -114,45 +96,40 @@
     z-index: 10000000;
     position: relative;
   }
-  .app__time {
+  .home__time {
     padding-top: 0;
     height: 41px;
   }
-
-  .app__body {
+  .home__body {
     height: calc(100% - 41px);
     margin-top: 41px;
     background-color: #fff;
   }
-  .app__aside {
+  .home__aside {
     width: 245px;
   }
-  .app__timegrid,
-  .app__timeline {
+  .home__timegrid,
+  .home__timeline {
     width: calc(100% - 245px);
     min-width: 1035px;
   }
-  .app::-webkit-scrollbar {
+  .home::-webkit-scrollbar {
       width: 16px;  
   }
-  .app::-webkit-scrollbar-track {
+  .home::-webkit-scrollbar-track {
       background-color: #fff;
   }
-  .app::-webkit-scrollbar-thumb {
+  .home::-webkit-scrollbar-thumb {
     width: 8px;
     background-clip: content-box;
     border-radius: 100px;
     border: 4px solid #fff;
     background-color: #d5dfe9;
   }
-
-  .app__content {
+  .home__content {
     height: calc(100% - 41px);
     margin-top: 41px;
   }
-
-
-
 }
 
 

@@ -1,7 +1,7 @@
 
 const shortCutFollowActivate = function() {
-	var app = document.querySelector('.app');
-	var appAside = document.querySelector('.app__aside');
+	var app = document.querySelector('.home');
+	var appAside = document.querySelector('.home__aside');
 	var items = document.querySelectorAll('.shortcut-item');
 	var asideWidth = appAside.offsetWidth;
 	var delta = (asideWidth === 181) ? 41 : 0;

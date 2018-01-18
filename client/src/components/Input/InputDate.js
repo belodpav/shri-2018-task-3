@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-
-import 'react-dates/initialize';
-import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
-import './SingleDatePicker.css';
  
 import moment from 'moment';
+
+import DatePicker from 'react-datepicker';
  
 import { IconCalendar } from '../Icon/Icon';
 
@@ -28,17 +25,13 @@ import { IconCalendar } from '../Icon/Icon';
 	render() {
 		return (
 			<div className={"input input_size_md input_theme_normal" + (true ? " input_actions_true" : "") }>
-				<SingleDatePicker
-				  date={this.props.date}
-				  onDateChange={this.props.onDateChange}
-				  focused={this.state.focused}
-				  onFocusChange={({ focused }) => this.setState({ focused })}
-				  numberOfMonths={1}
-				  readOnly={true}
-				  daySize={this.getDayItemWidth()}
-				  displayFormat="D MMMM, YYYY"
-				  hideKeyboardShortcutsPanel={true}
-				/>
+				<DatePicker
+          selected={this.props.date}
+          onChange={this.props.onDateChange}
+          monthsShown={1}
+          popperPlacement={'bottom-center'}
+          dateFormat="D MMMM, YYYY"
+        />
 				<IconCalendar onClick={this.handleClick} className="input__clear" />
 			</div>
 		);

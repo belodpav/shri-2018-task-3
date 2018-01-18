@@ -3,16 +3,8 @@
 	justify-content: space-between;
 	align-items: center;
 }
-/*.date-control__date {
-  flex: 1;
-	font-size: 15px;
-	line-height: 18px;
-	color: #000;
-	font-weight: 500;
-  display: flex;
-}*/
 .date-control__date {
-   position: absolute;
+  position: absolute;
   z-index: 1;
   left: 0;
   top: 0; 
@@ -33,14 +25,6 @@
   flex: 1;
   position: relative;
 }
-/*.date-control__date {
-  
-  width: 50%;
-  display: inline-block;
-  font-size: 15px;
-  line-height: 18px;
-  font-weight: 600;
-  letter-spacing: 0.47px;
-  font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
-   display: none;
-}*/
+.date-control_focused_true .date-control__date {
+  color: #0070E0;
+}
