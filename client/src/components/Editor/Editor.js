@@ -36,6 +36,7 @@ const Editor = (props) => {
 		members,
 		room,
 		isValid,
+		isFreeRooms,
 		validateMessage,
 		isModalRemove,
 		isModalCreate,
@@ -135,18 +136,25 @@ const Editor = (props) => {
 					{
 						roomRecomendations.map( item => {
 							const room = item.room;
-							return <RoomItem
-												key={room.id}
-												timeStart={dateStart.format('HH:mm')}
-												timeEnd={dateEnd.format('HH:mm')}
-												room={room}
-												onSetRoom={onSetRoom}
-												onUpdateEvents={onUpdateEvents}
-												changedEvents={item.changedEvents}
-											/>
+							return (
+								<RoomItem
+									key={room.id}
+									timeStart={dateStart.format('HH:mm')}
+									timeEnd={dateEnd.format('HH:mm')}
+									room={room}
+									onSetRoom={onSetRoom}
+									onUpdateEvents={onUpdateEvents}
+									changedEvents={item.changedEvents}
+								/>
+							);
 						})
 					}
-				</EditorItem> : "" 
+				</EditorItem> : !isFreeRooms ?
+				<EditorItem label="&nbsp;">
+					<div className="editor__no-rooms-message">
+					Извините, но в задный интервал времени все переговорки заняты. Выберите другую дату или время.
+					</div>
+				</EditorItem>: ""  
 				}
 					<EditorItem className="editor__item_touch_visible editor__item_space_bottom change-meeting__button ">
 						<div onClick={onRemoveButton} className="editor__item-delete">

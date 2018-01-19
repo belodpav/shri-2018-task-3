@@ -35,6 +35,8 @@
 	line-height: 17px;
 	border-radius: 4px;
 	border: 2px solid #e9ecef;
+	text-align: left;
+	background: transparent;
 }
 .input_actions_true .input__control {
 	padding-right: 44px;

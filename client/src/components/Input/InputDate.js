@@ -3,11 +3,24 @@ import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import IconContainer from '../../containers/IconContainer/IconContainer';
 
+
+class DatePickerButton extends Component {
+  render() {
+    return (
+      <button
+        className="input_size_md input__control"
+        onClick={this.props.onClick}      
+      >
+        {this.props.valueN}
+      </button>
+   );
+  }
+}
+
  class InputDate extends Component {
 	constructor(props) {
 		super(props);
 
-		console.log(this.props.date.format('DD MMM'));
 		this.state = {
 			date: this.props.date,
 			focused: false
@@ -28,6 +41,7 @@ import IconContainer from '../../containers/IconContainer/IconContainer';
           monthsShown={1}
           popperPlacement={'bottom'}
           dateFormat="D MMMM, YYYY"
+          customInput={<DatePickerButton valueN={this.props.date.format('D MMMM, YYYY')} />}
         />
 				<IconContainer
           cls="input__clear"

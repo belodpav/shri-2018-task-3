@@ -3,18 +3,58 @@ const { models, sequelize } = require('./models');
 function createData () {
   let usersPromise = models.User.bulkCreate([
     {
-      login: 'veged',
-      avatarUrl: 'https://avatars3.githubusercontent.com/u/15365?s=460&v=4',
+      login: 'Михаил Белов',
+      avatarUrl: 'https://belodpav.ru/shri-assets/02m.jpg',
       homeFloor: 0
     },
     {
-      login: 'alt-j',
-      avatarUrl: 'https://avatars1.githubusercontent.com/u/3763844?s=400&v=4',
+      login: 'Марина Скворцова',
+      avatarUrl: 'https://belodpav.ru/shri-assets/01w.jpg',
       homeFloor: 3
     },
     {
-      login: 'yeti-or',
-      avatarUrl: 'https://avatars0.githubusercontent.com/u/1813468?s=460&v=4',
+      login: 'Василий Громов',
+      avatarUrl: 'https://belodpav.ru/shri-assets/08m.jpg',
+      homeFloor: 2
+    },
+    {
+      login: 'Елена Пахомова',
+      avatarUrl: 'https://belodpav.ru/shri-assets/06w.jpg',
+      homeFloor: 3
+    },
+    {
+      login: 'Павел Шилов',
+      avatarUrl: 'https://belodpav.ru/shri-assets/10m.jpg',
+      homeFloor: 0
+    },
+    {
+      login: 'Жанна Кошелева',
+      avatarUrl: 'https://belodpav.ru/shri-assets/09w.jpg',
+      homeFloor: 1
+    },
+    {
+      login: 'Глеб Рябов',
+      avatarUrl: 'https://belodpav.ru/shri-assets/11m.jpg',
+      homeFloor: 5
+    },
+    {
+      login: 'Лилия Павлова',
+      avatarUrl: 'https://belodpav.ru/shri-assets/16w.jpg',
+      homeFloor: 4
+    },
+    {
+      login: 'Валентин Кузнецов',
+      avatarUrl: 'https://belodpav.ru/shri-assets/13m.jpg',
+      homeFloor: 4
+    },
+    {
+      login: 'Ирина Костина',
+      avatarUrl: 'https://belodpav.ru/shri-assets/21w.jpg',
+      homeFloor: 3
+    },
+    {
+      login: 'Денис Муравьёв',
+      avatarUrl: 'https://belodpav.ru/shri-assets/26m.jpg',
       homeFloor: 2
     }
   ]);

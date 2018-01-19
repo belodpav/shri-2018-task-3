@@ -16,7 +16,7 @@ class DatePickerButton extends Component {
         className="react-datepicker__open-btn"
         onClick={this.props.onClick}      
       >
-        {this.props.value}
+        {this.props.valueN}
       </button>
    );
   }
@@ -54,9 +54,8 @@ const DateControl = (props) => {
           onChange={onChange}
           monthsShown={numberOfMonths}
           popperPlacement={popperPlacement}
-          customInput={<DatePickerButton />}   
+          customInput={<DatePickerButton valueN={dateStr} />}   
         />
-        <span className="date-control__date">{dateStr}</span>
       </div>
       <CircleButtonContainer
         size='lg'

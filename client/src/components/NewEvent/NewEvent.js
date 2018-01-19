@@ -20,7 +20,6 @@ class NewEvent extends Component {
     updateEvent(event);
   }
 	handleCreateEvent(event) {
-		console.log(event);
 		const { createEvent } = this.props.eventActions;
 		createEvent(event);
 	}

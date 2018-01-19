@@ -53,7 +53,6 @@ module.exports = {
             });
   },
   updateEventData (root, { id, input, usersIds, roomId}, context) {
-    console.log(input, usersIds, roomId);
     return models.Event.findById(id)
             .then(event => {
               return event.update(input);

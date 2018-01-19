@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-
-import { getRecomendation, getRecomendation__2 } from '../../scripts/getRecomendation__process.js';
-
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getRecomendation, getRecomendation__2 } from '../../scripts/getRecomendation__process.js';
 import 'moment/locale/ru.js';
-
 import Editor from '../../components/Editor/Editor';
+
+import * as dateActions from './../../actions/DateActions';
 
 moment.locale('ru');
 
@@ -234,6 +235,17 @@ class EditorContainer extends Component {
   handleOnDateChange = (value) => {
     const oldDateStart = this.state.dateStart,
         oldDateEnd = this.state.dateEnd;
+
+    console.log('date is changing');
+    
+    if (!value || !value.isValid()) {
+      console.log('hey');
+      this.setState({
+        dateStart: oldDateStart,
+        dateEnd: oldDateEnd
+      })
+      return;
+    }
     
     const dateStartSettings = [
         value.get('year'),
@@ -257,9 +269,13 @@ class EditorContainer extends Component {
     const newStart = moment(dateStartSettings);
     const newEnd = moment(dateEndSettings);
 
+
+    this.props.dateActions.setDate(value);
+
     this.setState({
       dateStart: newStart,
-      dateEnd: newEnd
+      dateEnd: newEnd,
+      room: {}
     })
   };
   
@@ -299,7 +315,7 @@ class EditorContainer extends Component {
 
   render() {
     let className = 'editor';
-    const { title, cls, onGoHome } = this.props;
+    const { title, cls, onGoHome, rooms, events } = this.props;
     const {
       dateStart,
       dateEnd,
@@ -313,6 +329,7 @@ class EditorContainer extends Component {
       isModalCreate 
     } = this.state;
     let recoms = [];
+    let isFreeRooms = true;
     const {
       handleOnUpdateEvents,
       handleOnOk,
@@ -336,17 +353,20 @@ class EditorContainer extends Component {
     
     const data = {
       eventId: this.props.event.id || -99,
-      timeStart: this.state.dateStart,
-      timeEnd: this.state.dateEnd,
-      members: this.state.members,
-      rooms: this.props.rooms,
-      events: this.props.events
+      timeStart: dateStart,
+      timeEnd: dateEnd,
+      members: members,
+      rooms: rooms,
+      events: events
     };
 
-    if (!this.state.room.id && !dateStart.isSame(dateEnd) && dateStart.isBefore(dateEnd)) {
+    if (!room.id && !dateStart.isSame(dateEnd) && dateStart.isBefore(dateEnd)) {
       recoms = getRecomendation(data);
       if (!recoms.length) {
           recoms = getRecomendation__2(data);
+          if (!recoms.length) {
+            isFreeRooms = false;
+          }
       }
     }
 
@@ -362,6 +382,7 @@ class EditorContainer extends Component {
         members={members}
         room={room}
         isValid={isValid}
+        isFreeRooms={isFreeRooms}
         validateMessage={validateMessage}
         isModalRemove={isModalRemove}
         isModalCreate={isModalCreate} 
@@ -389,4 +410,13 @@ class EditorContainer extends Component {
 
 }
 
-export default EditorContainer;
+function mapStateToProps (state) {
+  return {
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    dateActions: bindActionCreators(dateActions, dispatch)
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(EditorContainer);
