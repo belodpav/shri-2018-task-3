@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
- 
 import moment from 'moment';
-
 import DatePicker from 'react-datepicker';
- 
-import { IconCalendar } from '../Icon/Icon';
+import IconContainer from '../../containers/IconContainer/IconContainer';
 
  class InputDate extends Component {
 	constructor(props) {
@@ -29,10 +26,14 @@ import { IconCalendar } from '../Icon/Icon';
           selected={this.props.date}
           onChange={this.props.onDateChange}
           monthsShown={1}
-          popperPlacement={'bottom-center'}
+          popperPlacement={'bottom'}
           dateFormat="D MMMM, YYYY"
         />
-				<IconCalendar onClick={this.handleClick} className="input__clear" />
+				<IconContainer
+          cls="input__clear"
+          type="calendar"
+          onClick={this.handleClick}
+        />
 			</div>
 		);
 	}

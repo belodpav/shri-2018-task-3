@@ -1,9 +1,9 @@
 .content__loader-box {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   z-index: 1000;
-  width: calc(100% - 181px);
+  width: 100vw;
   height: 100%;
   background-color: rgba(255, 255, 255, .5);
   display: flex;
@@ -17,6 +17,9 @@
 
 @media (min-width: 1280px) {
   .content__loader-box {
+    position: absolute;
+    top: 0;
+    right: 0;
     width: calc(100% - 245px);
   }
 }

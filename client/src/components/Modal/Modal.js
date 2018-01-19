@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Modal.css';
-
-import Button from '../Button/Button';
+import ButtonContainer from '../../containers/ButtonContainer/ButtonContainer';
 
 const ModalRemove = (props) => {
 
@@ -11,8 +10,8 @@ const ModalRemove = (props) => {
       <span className="modal__icon icon icon_type_girl-close"></span>
       <div className="modal__text">Встреча будет удалена безвозвратно</div>
       <div className="modal__buttons">
-        <Button onClick={props.onCancel} className="modal__button">Отмена</Button>
-        <Button onClick={props.onRemoveEvent} className="modal__button">Удалить</Button>
+        <ButtonContainer onClick={props.onCancel} cls="modal__button">Отмена</ButtonContainer>
+        <ButtonContainer onClick={props.onRemoveEvent} cls="modal__button">Удалить</ButtonContainer>
       </div>
     </div>
   </div> 
@@ -29,7 +28,7 @@ const ModalCreate = (props) => {
       <div className="modal__date">{props.date}, {props.timeRange}</div>
       <div className="modal__place">{props.roomTitle}&nbsp;&middot;&nbsp;{props.roomFloor} этаж</div>
       <div className="modal__buttons">
-        <Button onClick={props.onOk} theme="active" className="modal__button">Хорошо</Button>
+        <ButtonContainer onClick={props.onOk} theme="active" cls="modal__button">Хорошо</ButtonContainer>
       </div>
     </div>
   </div> 

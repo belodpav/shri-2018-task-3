@@ -65,7 +65,7 @@ class DateControlContainer extends Component {
   getPopperPlacement() {
     const viewPortWidth = window.innerWidth;
     if (viewPortWidth >= 1280) return 'bottom-start';
-    return 'bottom-center';
+    return 'bottom';
   }
 
   render() {

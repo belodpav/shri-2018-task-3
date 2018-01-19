@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
-import { Icon } from '../../components/Icon/Icon';
+import PropTypes from 'prop-types';
+import Icon from '../../components/Icon/Icon';
 
 class IconContainer extends Component {
   constructor(props) {
@@ -47,9 +47,17 @@ class IconContainer extends Component {
         onClick={onClick}
       />
     );
-
-
   }
+}
+
+IconContainer.propTypes = {
+  cls: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.oneOf(['arrow-right', 'arrow-left', 'close', 'edit', 'calendar', 'girl-close', 'party'])
+}
+
+IconContainer.defaultProps = {
+  type: ''
 }
 
 export default IconContainer;

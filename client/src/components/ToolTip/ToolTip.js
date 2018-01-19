@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './ToolTip.css';
 
 import { Person } from '../Person/Person';
-import { CircleButtonEdit } from '../CircleButton/CircleButton';
+import CircleButtonContainer from '../../containers/CircleButtonContainer/CircleButtonContainer';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -34,14 +34,19 @@ class ToolTip extends Component {
    return (
     <div  ref={(box) => {this.tooltip = box}} className={"tooltip " + this.props.className} style={style}>
       <span className="tooltip__triangle" style={this.props.styleTriangle} />
-      <CircleButtonEdit onClick={this.handleEditClick.bind(this)} className="tooltip__edit" />
+      <CircleButtonContainer 
+        cls="tooltip__edit"
+        hasIcon={true}
+        iconType="edit"
+        onClick={this.handleEditClick.bind(this)}
+      />
       <div className="tooltip__title">
               { event.title }
             </div>
             <div className="tooltip__info">
               <span className="tooltip__date">{event.dateStart.format('D MMMM')}</span>
               <span className="tooltip__time-range">
-              ,&nbsp;{event.dateStart.format('HH:mm')}&mdash;{event.dateEnd.format('HH:mm')}&nbsp;&middot;</span>
+              ,&nbsp;{event.dateStart.format('HH:mm')}&mdash;{event.dateEnd.format('HH:mm')}&nbsp;&middot;&nbsp;</span>
               <span className="tooltip__room">{event.room.title}</span>
             </div>
             <div className="tooltip__people">

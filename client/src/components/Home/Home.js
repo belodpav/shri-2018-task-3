@@ -4,11 +4,11 @@ import './Home.css';
 import TimeGridBackground from '../TimeGrid/TimeGridBackground';
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
-import Button from '../Button/Button';
+import ButtonContainer from '../../containers/ButtonContainer/ButtonContainer';
 import DateControlContainer from '../../containers/DateControlContainer/DateControlContainer';
 import ToolTip from '../ToolTip/ToolTip';
 import TimeLineRule from '../TimeGrid/TimeLineRule';
-import Content from '../Content/Content';
+import ContentContainer from '../../containers/ContentContainer/ContentContainer';
  
 const Home = (props) => {
   const {
@@ -23,7 +23,7 @@ const Home = (props) => {
     <div>
       <Header>
         <Logo />
-        <Button touchHidden={true} onClick={onCreateNewEvent} theme="active">Создать встречу</Button>
+        <ButtonContainer touchHidden={true} onClick={onCreateNewEvent} theme="active">Создать встречу</ButtonContainer>
       </Header>
       <div onClick={onClickOutToolTip} className="home">
           <div className="home__time time">
@@ -33,7 +33,7 @@ const Home = (props) => {
             <TimeLineRule className="home__timeline" date={date} />
           </div>
           <div className="home__body">
-            <Content className="home__content" />
+            <ContentContainer cls="home__content" />
             <div className="home__aside home__rooms"></div>
             <TimeGridBackground className="home__timegrid" />
           </div>
@@ -48,8 +48,6 @@ const Home = (props) => {
           
     </div>
   );
-
 }
-
 
 export default Home;

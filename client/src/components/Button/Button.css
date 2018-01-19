@@ -19,7 +19,7 @@
 	background-color:  #e9ecef;
 	color: #000;
 }
-.button_theme_normal:active {
+.button_theme_normal.button_pressed_true.button_hovered_true {
 	background-color: #DDE0E4;
 }
 .button_theme_normal:disabled {
@@ -30,7 +30,7 @@
 	background-color: #007dff;
 	color: #fff;
 }
-.button_theme_active:active {
+.button_theme_active.button_pressed_true.button_hovered_true {
 	background-color: #0059FF;
 }
 .button_theme_active:disabled {
@@ -51,10 +51,10 @@
 		height: 36px; 
 		padding: 10px 16px;
 	}
-	.button_theme_normal:hover {
+	.button_theme_normal.button_hovered_true {
 		background-color: #dde0e3;
 	}
-	.button_theme_normal:active {
+	.button_theme_normal.button_pressed_true.button_hovered_true {
 		background-color: #c8cdd3;
 	}
 	.button_theme_normal:disabled {
@@ -64,11 +64,10 @@
 		background-color: #007dff;
 		color: #fff;
 	}
-
-	.button_theme_active:hover {
+	.button_theme_active.button_hovered_true {
 		background-color: #0059ff;
 	}
-	.button_theme_active:active {
+	.button_theme_active.button_pressed_true.button_hovered_true {
 		background-color: #0011fe;
 	}
 	.button_theme_active:disabled {

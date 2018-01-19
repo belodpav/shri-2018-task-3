@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.css';
 
-import { CircleButtonLeft, CircleButtonRight } from '../CircleButton/CircleButton';
+import CircleButtonContainer from '../../containers/CircleButtonContainer/CircleButtonContainer';
 
 class DatePickerButton extends Component {
     
@@ -38,22 +38,32 @@ const DateControl = (props) => {
 
   return (
 		<div className={className}>
-			<CircleButtonLeft onClick={onClickPrevDate} />
-			 <div 
-          onFocus={onFocus}
-          onBlur={onBlur}
-          className="date-control__date-calendar"
-        >
-          <DatePicker
-            selected={date}
-            onChange={onChange}
-            monthsShown={numberOfMonths}
-            popperPlacement={popperPlacement}
-            customInput={<DatePickerButton />}   
-          />
-          <span className="date-control__date">{dateStr}</span>
-        </div>
-        	<CircleButtonRight onClick={onClickNextDate} />
+			<CircleButtonContainer 
+        size='lg'
+        hasIcon={true}
+        iconType='arrow-left'
+        onClick={onClickPrevDate}
+      />
+		 <div 
+        onFocus={onFocus}
+        onBlur={onBlur}
+        className="date-control__date-calendar"
+      >
+        <DatePicker
+          selected={date}
+          onChange={onChange}
+          monthsShown={numberOfMonths}
+          popperPlacement={popperPlacement}
+          customInput={<DatePickerButton />}   
+        />
+        <span className="date-control__date">{dateStr}</span>
+      </div>
+      <CircleButtonContainer
+        size='lg'
+        hasIcon={true}
+        iconType='arrow-right'
+        onClick={onClickNextDate}
+      />
 		</div>
   );
 

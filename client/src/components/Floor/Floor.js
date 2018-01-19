@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Floor.css';
 
-import RoomRow from '../RoomRow/RoomRow';
+import RoomRowContainer from '../../containers/RoomRowContainer/RoomRowContainer';
 
 import TimeGridFloorHeader from '../TimeGrid/TimeGridFloorHeader';
 
@@ -20,13 +20,15 @@ const Floor = ({ number, rooms}) => {
 			<div className="floor__rooms-list">
 				{
 					rooms.map( (room, index) => {
-						return <RoomRow className="floor__room"
-									key={index}
-									id={room.id}
-									name={room.title}
-									capacity={room.capacity}
-									events={[]}
-								/>
+						return (
+							<RoomRowContainer 
+								cls="floor__room"
+								key={index}
+								id={room.id}
+								name={room.title}
+								capacity={room.capacity}
+							/>
+						);
 					})
 				}
 			</div>

@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 
-import './Button.css';
+import './Button.css'; 
 
-const Button = ({onClick, disabled, touchHidden, className, children, theme}) => {
-	let classN = ' button button_size_md';
-	classN += touchHidden ? ' button_touch_hide' : '';
-	classN += theme === 'active' ? ' button_theme_active' : ' button_theme_normal';
+const Button = (props) => {
+	const {
+		children,
+		className,
+		disabled,
+		onClick,
+    onMouseEnter,
+    onMouseLeave,
+    onMouseDown,
+    onMouseUp,
+    onFocus,
+    onBlur } = props;
+
 	return (
 		<button
+			className={className}
+			disabled={disabled}
 			onClick={onClick}
-			className={className  + classN}
-			disabled={disabled} 
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onFocus={onFocus}
+      onBlur={onBlur}
 		>
 			{children}
 		</button>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import IconContainer from '../IconContainer/IconContainer';
 
 class TextInputClearContainer extends Component {
@@ -10,7 +9,7 @@ class TextInputClearContainer extends Component {
     className += (text && text.length) ? ' text-input__clear_visible_true' : '';
 
     return (
-      <IconContainer cls={className} type="cross" onClick={onClick} />
+      <IconContainer cls={className} type="close" onClick={onClick} />
     );
   }
 }

@@ -1,6 +1,6 @@
  import React, { Component } from 'react';
 
- import { IconClose } from '../Icon/Icon';
+ import IconContainer from '../../containers/IconContainer/IconContainer';
  import './Input.css';
 
 class InputText extends Component {
@@ -44,7 +44,11 @@ class InputText extends Component {
 					onChange={this.handleChange}
 					value={this.props.value}	
 				/>
-				<IconClose onClick={this.handleClick} className="input__clear" />
+				<IconContainer
+					cls="input__clear"
+					type="close"
+					onClick={this.handleClick}
+				/>
 			</div>
 		);
 	}

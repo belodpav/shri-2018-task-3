@@ -12,7 +12,7 @@ import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import Button from '../Button/Button';
 
-import Editor from '../Editor/Editor';
+import EditorContainer from '../../containers/EditorContainer/EditorContainer';
 import EditorItem from '../Editor/EditorItem';
 
 
@@ -41,21 +41,18 @@ class ChangeEvent extends Component {
 					<Logo />
 				</Header>
 				<div className="change-meeting">
-					<Editor
+					<EditorContainer
 						date={date}
 						event={activeEvent}
 						users={users}
-						className="new-meeting__editor"
+						cls="new-meeting__editor"
 						title="Редактирование встречи"
 						events={this.props.events.events}
 						rooms={this.props.rooms.rooms}
-						onCancle={openHomePage}
+						onGoHome={openHomePage}
 						onSaveEvent={this.handleSaveEvent.bind(this)}
 						onRemoveEvent={this.handleRemoveEvent.bind(this)}
-					>
-						
-						
-					</Editor>
+					/>
 				</div>
 			</div>
 		);

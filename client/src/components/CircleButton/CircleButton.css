@@ -2,7 +2,7 @@
 	display: flex;
 	text-decoration: none;
 	border-radius: 100%;
-    overflow: hidden;
+  overflow: hidden;
 }
 .circle-button_size_md {
 	height: 24px;
@@ -24,7 +24,7 @@
 .circle-button_theme_normal .circle-button__icon {
 	opacity: .43;
 }
-.circle-button_theme_normal:active .circle-button__icon {
+.circle-button_theme_normal.circle-button_pressed_true .circle-button__icon {
 	opacity: 1;
 }
 
@@ -47,7 +47,11 @@
 	.circle-button_theme_normal .circle-button__icon {
 		opacity: .43;
 	}
-	.circle-button_theme_normal:hover .circle-button__icon {
+	.circle-button_hovered_true .circle-button__icon {
+		opacity: .6;
+	} 
+	.circle-button_theme_normal.circle-button_pressed_true.circle-button_hovered_true .circle-button__icon {
 		opacity: 1;
 	}
+	
 }
