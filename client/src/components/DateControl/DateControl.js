@@ -4,7 +4,7 @@ import './DateControl.css';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './SingleDatePicker.css';
+import './DatePicker.css';
 
 import { CircleButtonLeft, CircleButtonRight } from '../CircleButton/CircleButton';
 
@@ -48,7 +48,8 @@ const DateControl = (props) => {
             selected={date}
             onChange={onChange}
             monthsShown={numberOfMonths}
-            popperPlacement={popperPlacement}    
+            popperPlacement={popperPlacement}
+            customInput={<DatePickerButton />}   
           />
           <span className="date-control__date">{dateStr}</span>
         </div>
