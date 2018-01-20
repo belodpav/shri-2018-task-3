@@ -10,5 +10,4 @@ const EditorItem = ({className, label, children}) => {
 	);
 };
 
-
 export default EditorItem;

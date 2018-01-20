@@ -4,7 +4,6 @@ import './RoomItem.css';
 
 const RoomItem = ({onSetRoom, onUpdateEvents, changedEvents, timeStart, timeEnd, room}) => {
   function handleClick() {
-    
     if (onUpdateEvents && changedEvents) {
       onUpdateEvents(changedEvents);
     }

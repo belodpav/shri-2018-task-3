@@ -22,6 +22,10 @@
 	background-image: url('icon_type_arrow.svg');
 	transform: rotate(180deg);
 }
+.icon_type_arrow-down {
+	background-image: url('icon_type_arrow.svg');
+	transform: rotate(90deg);
+}
 .icon_type_arrow-up {
 	background-image: url('icon_type_arrow.svg');
 	transform: rotate(-90deg) scale(1);
@@ -55,6 +59,10 @@
 	.icon_type_arrow-right {
 		background-image: url('icon_type_arrow@desktop.svg');
 		transform: rotate(0);
+	}
+	.icon_type_arrow-down {
+		background-image: url('icon_type_arrow@desktop.svg');
+		transform: rotate(-90deg);
 	}
 	.icon_type_arrow-left {
 		background-image: url('icon_type_arrow@desktop.svg');

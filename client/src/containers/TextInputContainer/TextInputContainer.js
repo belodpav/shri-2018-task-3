@@ -47,7 +47,7 @@ class TextInputContainer extends Component {
   render() {
     let className = 'text-input text-input_theme_normal';
     const { hovered, focused, pressed } = this.state;
-    const { placeholder, text, hasClear, onChange, onClear, cls } = this.props;
+    const { placeholder, text, hasClear, onChange, onClear, cls, inputProps } = this.props;
     const { handleMouseEnter, handleMouseLeave, handleFocus, handleBlur } = this;
 
     className += ' ' + cls;
@@ -56,7 +56,6 @@ class TextInputContainer extends Component {
     className += pressed ? ' text-input_pressed_true' : '';
 
     className += hasClear ? ' text-input_has-icon_true text-input_has-clear_true' : '';
-
 
     return (
       <TextInput 
@@ -69,6 +68,7 @@ class TextInputContainer extends Component {
         onClear={onClear}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        inputProps={inputProps}
       />
     );
   }

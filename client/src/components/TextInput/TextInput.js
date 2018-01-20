@@ -8,6 +8,7 @@ const {
   className,
   text,
   placeholder,
+  inputProps,
   onChange,
   onClear,
   onMouseEnter,
@@ -15,6 +16,13 @@ const {
   onBlur,
   onFocus
   } = props;
+
+  let val = '';
+  if (inputProps) {
+    val = inputProps.value;
+  } else {
+    val = text;
+  }
 
   return (
     <div 
@@ -24,14 +32,15 @@ const {
       onFocus={onFocus}
       onBlur={onBlur} 
     >
-      <input 
+      <input
         type="text"
         value={text}
         className="text-input__control"
         placeholder={placeholder}
         onChange={onChange}
+        {...inputProps}
       />
-      <TextInputClearContainer onClick={onClear} text={text} />
+      <TextInputClearContainer onClick={onClear} text={val} />
     </div>
   );
 }

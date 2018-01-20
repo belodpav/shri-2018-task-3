@@ -13,6 +13,7 @@
 	line-height: 0;
 }
 .person__avatar-img {
+	background-color: #ddd;
 	width: 100%;
 }
 .person__name {

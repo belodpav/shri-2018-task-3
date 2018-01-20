@@ -53,7 +53,7 @@ class IconContainer extends Component {
 IconContainer.propTypes = {
   cls: PropTypes.string,
   onClick: PropTypes.func,
-  type: PropTypes.oneOf(['arrow-right', 'arrow-left', 'close', 'edit', 'calendar', 'girl-close', 'party'])
+  type: PropTypes.oneOf(['arrow-down', 'arrow-right', 'arrow-left', 'close', 'edit', 'calendar', 'girl-close', 'party'])
 }
 
 IconContainer.defaultProps = {

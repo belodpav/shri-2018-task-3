@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-
-import './NewEvent.css';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import './NewEvent.css';
 import * as pageActions from './../../actions/PageActions';
 import * as eventActions from './../../actions/EventActions';
 
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';
 import Button from '../Button/Button';
-
 import EditorContainer from '../../containers/EditorContainer/EditorContainer';
 
 class NewEvent extends Component {

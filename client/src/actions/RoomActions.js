@@ -1,8 +1,6 @@
 import * as types from '../constants/ActionTypes';
-
 import { getEvents } from '../actions/EventActions';
 import { getUsers } from '../actions/UserActions';
-
 import shortCutFollowActivate from '../scripts/shortCutFollow';
 import moment from 'moment';
 

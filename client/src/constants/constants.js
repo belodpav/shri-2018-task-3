@@ -1,2 +1,2 @@
-export const TIME_START = 8,
-			   TIME_END = 23;
+export const TIME_START = 8;
+export const TIME_END = 23;

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import IconContainer from '../../containers/IconContainer/IconContainer';
+import './InputDate.css';
 
 
 class DatePickerButton extends Component {
   render() {
     return (
       <button
-        className="input_size_md input__control"
+        className="input-date_size_md input-date__control"
         onClick={this.props.onClick}      
       >
         {this.props.valueN}
@@ -34,7 +35,11 @@ class DatePickerButton extends Component {
   }
 	render() {
 		return (
-			<div className={"input input_size_md input_theme_normal" + (true ? " input_actions_true" : "") }>
+			<div className="input-date input-date_size_md input-date_theme_normal input-date_actions_true">
+        <IconContainer
+          cls="input-date__clear"
+          type="calendar"
+        />
 				<DatePicker
           selected={this.props.date}
           onChange={this.props.onDateChange}
@@ -42,11 +47,6 @@ class DatePickerButton extends Component {
           popperPlacement={'bottom'}
           dateFormat="D MMMM, YYYY"
           customInput={<DatePickerButton valueN={this.props.date.format('D MMMM, YYYY')} />}
-        />
-				<IconContainer
-          cls="input__clear"
-          type="calendar"
-          onClick={this.handleClick}
         />
 			</div>
 		);

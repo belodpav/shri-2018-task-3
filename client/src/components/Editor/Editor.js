@@ -16,11 +16,13 @@ import EditorValidator from '../Editor/EditorValidator';
 import { ModalRemove, ModalCreate } from '../Modal/Modal';
 import { RoomItemCurrent, RoomItem } from '../RoomItem/RoomItem';
 
-import InputText from '../Input/InputText';
-import InputDate from '../Input/InputDate';
-import InputAutocomplete from '../Input/InputAutocomplete';
+import InputDate from '../InputDate/InputDate';
+
+import UserSelectInputContainer from '../../containers/UserSelectInputContainer/UserSelectInputContainer';
+
 import ButtonContainer from '../../containers/ButtonContainer/ButtonContainer';
 import TimePickerContainer from '../../containers/TimePickerContainer/TimePickerContainer';
+import TextInputContainer from '../../containers/TextInputContainer/TextInputContainer';
 
 
 
@@ -53,6 +55,7 @@ const Editor = (props) => {
     onClearRoom,
     onSetRoom,
     onChangeEventName,
+    onClearEventName,
     onSelected,
     onDeleteClick,
     onChangeDateStart,
@@ -73,9 +76,14 @@ const Editor = (props) => {
 			</div>
 			<EditorBody>
 				<EditorItem label="Тема">
-					<InputText onChange={onChangeEventName} value={eventName} placeholder="О чем будем говорить?" />
-				</EditorItem>
-				
+					<TextInputContainer 
+						onChange={onChangeEventName}
+						onClear={onClearEventName}
+						text={eventName}
+						hasClear={true}
+						placeholder="О чем будем говорить?"
+					/>
+				</EditorItem>	
 				<EditorItem className="editor__row editor__item_space_bottom" >
 					<EditorItemDate className="editor__item-date" label="Дата">
 						<InputDate 
@@ -85,10 +93,10 @@ const Editor = (props) => {
 					</EditorItemDate>
 					<EditorItemTime label="Начало">
 						<TimePickerContainer
-				        value={dateStart.format('HH:mm')}
-				        onChange={onChangeDateStart}
-				        minTime='08:00'
-				        maxTime='22:45'
+			        value={dateStart.format('HH:mm')}
+			        onChange={onChangeDateStart}
+			        minTime='08:00'
+			        maxTime='22:45'
 				    />
 					</EditorItemTime>
 					<div className="editor__item_touch_no-label">
@@ -97,15 +105,15 @@ const Editor = (props) => {
 					</div>
 					<EditorItemTime label="Конец">
 						<TimePickerContainer
-				        value={dateEnd.format('HH:mm')}
-				        onChange={onChangeDateEnd}
-				        minTime={dateStart.clone().add(15,'minutes').format('HH:mm')}
-				        maxTime='23:00'
+			        value={dateEnd.format('HH:mm')}
+			        onChange={onChangeDateEnd}
+			        minTime={dateStart.clone().add(15,'minutes').format('HH:mm')}
+			        maxTime='23:00'
 				    />
 					</EditorItemTime>
 				</EditorItem>
 				<EditorItem className="editor__item_space_bottom" label="Участники">
-					<InputAutocomplete 
+					<UserSelectInputContainer
 						placeholder="Например, Иван Пупкин"
 						list={peopleAvailable}
 						onSelected={onSelected}
@@ -150,7 +158,7 @@ const Editor = (props) => {
 						})
 					}
 				</EditorItem> : !isFreeRooms ?
-				<EditorItem label="&nbsp;">
+				<EditorItem className="editor__item_space_bottom" label="&nbsp;">
 					<div className="editor__no-rooms-message">
 					Извините, но в задный интервал времени все подходящие переговорки заняты. Выберите другую дату или время.
 					</div>
@@ -186,36 +194,36 @@ const Editor = (props) => {
 					 		Создать встречу
 					 	</ButtonContainer>
 					</div>
-					<div className="change-meeting__footer submit-bar">
-					 	<ButtonContainer
-					 		onClick={onGoHome}
-					 		cls="submit-bar__button "
-					 	>
-					 		Отмена
-					 	</ButtonContainer>
-					 	<ButtonContainer
-					 		onClick={onRemoveButton}
-					 		cls="submit-bar__button change-meeting__button"
-					 	>
-					 		Удалить встречу
-					 	</ButtonContainer>
-					 	<ButtonContainer
-					 		onClick={onSaveEvent}
-					 		cls="submit-bar__button change-meeting__button"
-					 		disabled={!isValid}
-					 	>
-					 		Сохранить
-					 	</ButtonContainer>
-					 	<ButtonContainer
-					 		onClick={onCreateEvent}
-					 		cls="submit-bar__button new-meeting__button"
-					 		disabled={!isValid}
-					 		theme="active"
-					 	>
-					 		Создать встречу
-					 	</ButtonContainer>
-					</div>
 			</EditorBody>
+			<div className="change-meeting__footer submit-bar">
+			 	<ButtonContainer
+			 		onClick={onGoHome}
+			 		cls="submit-bar__button "
+			 	>
+			 		Отмена
+			 	</ButtonContainer>
+			 	<ButtonContainer
+			 		onClick={onRemoveButton}
+			 		cls="submit-bar__button change-meeting__button"
+			 	>
+			 		Удалить встречу
+			 	</ButtonContainer>
+			 	<ButtonContainer
+			 		onClick={onSaveEvent}
+			 		cls="submit-bar__button change-meeting__button"
+			 		disabled={!isValid}
+			 	>
+			 		Сохранить
+			 	</ButtonContainer>
+			 	<ButtonContainer
+			 		onClick={onCreateEvent}
+			 		cls="submit-bar__button new-meeting__button"
+			 		disabled={!isValid}
+			 		theme="active"
+			 	>
+			 		Создать встречу
+			 	</ButtonContainer>
+			</div>
 		</div>
 		{isModalRemove ?
 			<ModalRemove 

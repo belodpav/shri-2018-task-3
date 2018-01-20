@@ -8,5 +8,4 @@ const EditorBody = ({children}) => (
 	</div>
 );
 
-
 export default EditorBody;

@@ -24,6 +24,8 @@
   letter-spacing: 0.47px;
   font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
 }
+
+
 .react-autosuggest__input--open {
   border: 2px solid #007DFF;
 }
@@ -123,5 +125,34 @@
     border: 4px solid #fff;
     background-color: #d5dfe9;
   }
+  .text-input_hovered_true .react-autosuggest__input::placeholder {
+    font-size: 0;
+  }
 
+
+}
+
+.autocomplete__icon {
+  margin: 2px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  opacity: 1;
+  cursor: pointer;
+  background-color: #fff;
+  display: none;
+}
+
+.autocomplete__icon_visible_true {
+  display: inline-block;
+}
+
+@media (min-width: 1280px) {
+  .autocomplete__icon {
+    width: 34px;
+    height: 34px;
+  }
 }

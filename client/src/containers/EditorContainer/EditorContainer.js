@@ -132,11 +132,19 @@ class EditorContainer extends Component {
     });
   };
 
-  handleOnChangeEventName = (value) => {
+  handleOnChangeEventName = (event) => {
+    const value = event.target.value;
+
     this.setState({
       eventName: value
     });
   };
+
+  handleOnClearEventName = () => {
+    this.setState({
+      eventName: ''
+    })
+  }
 
   handleOnSelected = (value) => {
     const peopleAvailableNew = this.state.peopleAvailable.filter( person => 
@@ -353,6 +361,7 @@ class EditorContainer extends Component {
       handleOnClearRoom,
       handleOnSetRoom,
       handleOnChangeEventName,
+      handleOnClearEventName,
       handleOnSelected,
       handleOnDeleteClick,
       handleOnChangeDateStart,
@@ -416,6 +425,7 @@ class EditorContainer extends Component {
         onClearRoom={handleOnClearRoom}
         onSetRoom={handleOnSetRoom}
         onChangeEventName={handleOnChangeEventName}
+        onClearEventName={handleOnClearEventName}
         onSelected={handleOnSelected}
         onDeleteClick={handleOnDeleteClick}
         onChangeDateStart={handleOnChangeDateStart}

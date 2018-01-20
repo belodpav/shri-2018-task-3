@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './Floor.css';
-
 import RoomRowContainer from '../../containers/RoomRowContainer/RoomRowContainer';
-
 import TimeGridFloorHeader from '../TimeGrid/TimeGridFloorHeader';
-
 
 
 const Floor = ({ number, rooms}) => {
