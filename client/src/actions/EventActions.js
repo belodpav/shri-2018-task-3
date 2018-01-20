@@ -47,19 +47,7 @@ export function createEvent(event) {
 				 )
 			.then(res => res.json())
 			.then(response => {	
-				// Convert ISO Date strings to Moment() date objects
-			/*	const eventsOrigin = response.data.eventsByDateRange;
-				const eventsList = eventsOrigin.map( event => {
-					return {
-						...event,
-						dateStart: strDateToMoment(event.dateStart),
-						dateEnd: strDateToMoment(event.dateEnd)
-					}
-				});
-				const events = sortEventsByDate(eventsList);
-				
-				const eventsByRoomId = toListByRoom(events);*/
-				
+			
 				// Dispatch GET_EVENTS_SUCCESS
 				dispatch({
 					type: types.POST_EVENT_SUCCESS
@@ -71,14 +59,6 @@ export function createEvent(event) {
 
 				dispatch(getEvents({start: startRange, end: endRange}, true));
 				
-				/*if (isAllDay) {
-					dispatch({
-						type: types.SET_EVENTS,
-						payload: eventsByRoomId
-					});		
-					
-					dispatch(getDiagramData());
-				}*/
 			})
 			.catch( error => {
 				dispatch({
@@ -250,7 +230,8 @@ export function getEvents(dateRange, isAllDay) {
 					room {
 						id,
 						title,
-						floor
+						floor,
+						capacity
 					}
 				}
 			}

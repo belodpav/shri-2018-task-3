@@ -5,11 +5,32 @@ import { connect } from 'react-redux';
 
 import {TIME_START, TIME_END} from '../../constants/constants';
 import Meeting from '../../components/Meeting/Meeting';
-import FreeTimeRange from '../../components/FreeTimeRange/FreeTimeRange';
+import FreeTimeRangeContainer from '../FreeTimeRangeContainer/FreeTimeRangeContainer';
 import RoomRow from '../../components/RoomRow/RoomRow';
 
 
 class RoomRowContainer extends Component {
+  constructor() {
+    super();
+
+    const initState = {
+      isActive: false
+    }
+
+    this.state = initState;
+  }
+
+  handleOnFreeItemMouseEnter = () => {
+    this.setState({
+      isActive: true
+    })
+  };
+
+  handleOnFreeItemMouseLeave = () => {
+    this.setState({
+      isActive: false
+    })
+  };
 
   getStringCapacity(capacity) {
     if (capacity > 30) return 'более 30 человек';
@@ -17,10 +38,14 @@ class RoomRowContainer extends Component {
     if (capacity > 10) return 'до 20 человек';
     if (capacity > 6) return 'до 10 человек';
     if (capacity >= 3) return '3 — 6 человек';
-    return 'до 3 человек';
+    return 'до 2 человек';
   }
 
   getDiagramItems = (roomId, diagram) => {
+    const {
+      handleOnFreeItemMouseEnter,
+      handleOnFreeItemMouseLeave
+    } = this;
     let eventElements = [];
     let isFree = false;
     if (diagram.hasOwnProperty(roomId)) {
@@ -39,11 +64,13 @@ class RoomRowContainer extends Component {
       } else {
         isFree = true;
         return (
-          <FreeTimeRange
+          <FreeTimeRangeContainer
             event={event.event}
             key={event.event.dateStart.valueOf()}
             width={event.width + '%'}
-            />
+            onFreeItemMouseEnter={handleOnFreeItemMouseEnter}
+            onFreeItemMouseLeave={handleOnFreeItemMouseLeave}
+          />
         );
       }
     });
@@ -61,7 +88,7 @@ class RoomRowContainer extends Component {
     const { room } = this.props.storeEvents.activeEvent;
     const isActiveTooltip = this.props.tooltip.isActive;
     const roomData = getDiagramItems(id, diagram);
-    const isActive = (isActiveTooltip && room && room.id === id) ? true : false;
+    const { isActive } = this.state;
 
     isFree = roomData.isFree;
     diagramItems = roomData.items;

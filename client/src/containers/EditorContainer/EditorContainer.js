@@ -142,17 +142,19 @@ class EditorContainer extends Component {
     const peopleAvailableNew = this.state.peopleAvailable.filter( person => 
       person.id !== value.id
     );
-    this.setState({
-      members: [...this.state.members, value],
-      peopleAvailable: peopleAvailableNew
-    });
     
     if (this.state.room.capacity && (this.state.members.length + 1 > this.state.room.capacity)) {
       this.setState({
+        members: [...this.state.members, value],
+        peopleAvailable: peopleAvailableNew,
         room: {}
       });
-    }
-    
+    } else {
+      this.setState({
+        members: [...this.state.members, value],
+        peopleAvailable: peopleAvailableNew
+      });
+    }    
   };
 
   handleOnDeleteClick = (value) => {
@@ -235,11 +237,9 @@ class EditorContainer extends Component {
   handleOnDateChange = (value) => {
     const oldDateStart = this.state.dateStart,
         oldDateEnd = this.state.dateEnd;
-
-    console.log('date is changing');
     
     if (!value || !value.isValid()) {
-      console.log('hey');
+
       this.setState({
         dateStart: oldDateStart,
         dateEnd: oldDateEnd
@@ -278,6 +278,17 @@ class EditorContainer extends Component {
       room: {}
     })
   };
+
+  hasRoomsInCapacityRange(rooms, members) {
+    
+    for(let i = 0; i < rooms.length; i++) {
+      if (rooms[i].capacity >= members.length) {
+        return true
+      }
+    }
+
+    return false;
+  }
   
   getAvailablePeople(allUsers, users) {
     let availableUsers = [];
@@ -346,7 +357,8 @@ class EditorContainer extends Component {
       handleOnDeleteClick,
       handleOnChangeDateStart,
       handleOnChangeDateEnd,
-      handleOnDateChange
+      handleOnDateChange,
+      hasRoomsInCapacityRange,
     } = this;
 
     className += cls ? ' ' + cls : '';
@@ -362,11 +374,16 @@ class EditorContainer extends Component {
 
     if (!room.id && !dateStart.isSame(dateEnd) && dateStart.isBefore(dateEnd)) {
       recoms = getRecomendation(data);
-      if (!recoms.length) {
-          recoms = getRecomendation__2(data);
-          if (!recoms.length) {
-            isFreeRooms = false;
-          }
+
+      if (hasRoomsInCapacityRange(rooms, members)) {
+        if (!recoms.length) {
+            recoms = getRecomendation__2(data);
+            if (!recoms.length) {
+              isFreeRooms = false;
+            }
+        }
+      } else {
+        isFreeRooms = false;
       }
     }
 

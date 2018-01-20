@@ -118,9 +118,11 @@ function getUnCrossedRooms(rooms, events) {
 
 // events here are from crossEvents array but like object by room IDs 
 function isCrossRooms(roomA, roomB, events) {
-  console.log(roomA, roomB);
+  console.log(roomA, roomB, events);
   let setA = events[roomA.id];
   let setB = events[roomB.id];
+
+  if (!setA || !setB) return true;
 
   for(let j = 0; j < setA.length; j++) {
     let event = setA[j];

@@ -65,7 +65,6 @@ class Meeting extends Component {
       classN: classN
     };
     if (this.props.tooltip.isActive) {
-      console.log('ddddd');
       this.props.toolTipActions.hideToolTip();
     }
     

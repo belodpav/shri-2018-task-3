@@ -152,7 +152,7 @@ const Editor = (props) => {
 				</EditorItem> : !isFreeRooms ?
 				<EditorItem label="&nbsp;">
 					<div className="editor__no-rooms-message">
-					Извините, но в задный интервал времени все переговорки заняты. Выберите другую дату или время.
+					Извините, но в задный интервал времени все подходящие переговорки заняты. Выберите другую дату или время.
 					</div>
 				</EditorItem>: ""  
 				}

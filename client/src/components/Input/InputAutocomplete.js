@@ -34,9 +34,14 @@ class InputAutocomplete extends Component {
 	getSuggestions = value => {
 	  const inputValue = value.trim().toLowerCase();
 	  const inputLength = inputValue.length;
-	  return inputLength === 0 ? this.props.list : this.props.list.filter(lang =>
-	    lang.login.toLowerCase().slice(0, inputLength) === inputValue
-	  );
+	  return inputLength === 0 ? this.props.list : this.props.list.filter(lang => {
+	    const name = lang.login.toLowerCase();
+	    if (name.indexOf(inputValue) >= 0) {
+	    	return true
+	    } else {
+	    	return false;
+	    }
+	  });
 	};
 
 	getSuggestionValue = suggestion => suggestion.login;
@@ -89,7 +94,8 @@ class InputAutocomplete extends Component {
 			        renderSuggestion={renderSuggestion}
 			        inputProps={inputProps}
 							shouldRenderSuggestions={ () => true }
-							focusInputOnSuggestionClick={false}    
+							focusInputOnSuggestionClick={false}
+							highlightFirstSuggestion={true} 
 			      />
 			</div>
 		);
