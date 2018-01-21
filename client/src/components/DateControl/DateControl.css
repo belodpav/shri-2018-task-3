@@ -28,3 +28,9 @@
 .date-control_focused_true .date-control__date {
   color: #0070E0;
 }
+
+@media (min-width: 1280px) {
+  .date-control .react-datepicker-popper {
+    left: -24px!important;
+  }
+}

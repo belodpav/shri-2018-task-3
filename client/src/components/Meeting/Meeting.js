@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './Meeting.css';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import * as toolTipActions from './../../actions/ToolTipActions';
 import * as eventActions from './../../actions/EventActions';
 
@@ -11,7 +9,7 @@ class Meeting extends Component {
   handleClick() {
     
     const meetingBox = this.box; 
-    this.props.toolTipActions.showToolTip();
+    //this.props.toolTipActions.showToolTip();
     let top = this.box.getBoundingClientRect().bottom;
     let left = this.box.getBoundingClientRect().left + this.box.offsetWidth / 2;
     let classN = 'tooltip_pos_bottom';
@@ -64,13 +62,13 @@ class Meeting extends Component {
       triangleLeft: triangleLeft,
       classN: classN
     };
-    if (this.props.tooltip.isActive) {
+    /*if (this.props.tooltip.isActive) {
       this.props.toolTipActions.hideToolTip();
-    }
+    }*/
     
     this.props.toolTipActions.setToolTipCoord(data);
     this.props.eventActions.setActiveEvent(this.props.event);
-
+    setTimeout( () => { this.props.toolTipActions.showToolTip()}, 50);
   }
   render() {
     const activeEvent = this.props.storeEvents.activeEvent;

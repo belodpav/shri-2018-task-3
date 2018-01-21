@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
  
 import HomeContainer from '../../containers/HomeContainer/HomeContainer';
-import ChangeEvent from '../ChangeEvent/ChangeEvent';
-import NewEvent from '../NewEvent/NewEvent';
+import ChangeEventContainer from '../../containers/ChangeEventContainer/ChangeEventContainer';
+import NewEventContainer from '../../containers/NewEventContainer/NewEventContainer';
 
 import {
   HOME_PAGE,
@@ -21,10 +21,10 @@ const App = (props) => {
       appChild = <HomeContainer />;
       break;
     case CHANGE_EVENT_PAGE:
-      appChild = <ChangeEvent />;
+      appChild = <ChangeEventContainer />;
       break;
     case NEW_EVENT_PAGE:
-      appChild = <NewEvent />;
+      appChild = <NewEventContainer />;
       break;
   }
 
