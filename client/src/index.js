@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 
 import './index.css';
 import AppContainer from './containers/AppContainer/AppContainer';
-
-import shortCutFollowActivate from './scripts/shortCutFollow.js';
 import './scripts/shortCutFollow.css';
 
 import configureStore from './store/configureStore';
