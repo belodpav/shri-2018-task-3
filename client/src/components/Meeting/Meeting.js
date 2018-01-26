@@ -33,19 +33,22 @@ class Meeting extends Component {
         top -=140 + meetingBox.offsetHeight;
         classN = 'tooltip_pos_top';
       }
-
-      if (viewPortWidth / 2 > this.box.getBoundingClientRect().right) {
-        let middle = this.box.getBoundingClientRect().right - this.box.offsetWidth / 2;
+      let leftPos = this.box.getBoundingClientRect().left < 0 ? 0 : this.box.getBoundingClientRect().left;
+      let rightPos = this.box.getBoundingClientRect().right > viewPortWidth ? viewPortWidth : this.box.getBoundingClientRect().right;
+      let width = rightPos - leftPos;
+      
+      if (viewPortWidth / 2 > rightPos) {
+        let middle = rightPos - width / 2;
        
-        if (this.box.getBoundingClientRect().left > 0) {
+        if (leftPos > 0) {
             triangleLeft =  middle + 'px';
         } else {
             triangleLeft = '15px';
         } 
       } else {
-        let middle = this.box.getBoundingClientRect().left + this.box.offsetWidth / 2;
+        let middle = leftPos + width / 2;
        
-        if (this.box.getBoundingClientRect().right < viewPortWidth) {
+        if (rightPos <= viewPortWidth) {
             triangleLeft =  middle + 'px';
         } else {
             triangleLeft = 'calc(100% - 15px)';
