@@ -192,6 +192,21 @@ export function updateEvent(event) {
 	}
 }
 
+export function showMessageCreatedEvent() {
+	return (dispatch) => {
+		dispatch({
+			type: types.SHOW_MESSAGE_CREATED_EVENT
+		})
+	}
+}
+
+export function hideMessageCreatedEvent() {
+	return (dispatch) => {
+		dispatch({
+			type: types.HIDE_MESSAGE_CREATED_EVENT
+		})
+	}
+}
 
 export function setActiveEvent(event) {
 	return (dispatch) => {

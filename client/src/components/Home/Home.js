@@ -9,13 +9,16 @@ import DateControlContainer from '../../containers/DateControlContainer/DateCont
 import ToolTipContainer from '../../containers/ToolTipContainer/ToolTipContainer';
 import TimeLineRule from '../TimeGrid/TimeLineRule';
 import ContentContainer from '../../containers/ContentContainer/ContentContainer';
+import { ModalCreate } from '../Modal/Modal';
  
 const Home = (props) => {
   const {
     activeEvent,
+    isModalCreated,
     date,
     tooltip,
     isToolTipActive,
+    onOk,
     onCreateNewEvent,
     onClickOutToolTip } = props;
   
@@ -44,7 +47,17 @@ const Home = (props) => {
           styleTriangle={{left: tooltip.triangleLeft}} 
           event={activeEvent} 
           cls={tooltip.classN}
-        /> : ""}     
+        /> : ""}
+      {isModalCreated ?
+        <ModalCreate
+          onOk={onOk}
+          date={activeEvent.dateStart.format('D MMMM')}
+          timeRange={activeEvent.dateStart.format('HH:mm') + '—' + activeEvent.dateEnd.format('HH:mm')}
+          roomTitle={activeEvent.room.title}
+          roomFloor={activeEvent.room.floor}
+        />
+        : ""
+      }     
     </div>
   );
 }

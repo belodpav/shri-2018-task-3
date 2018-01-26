@@ -120,7 +120,7 @@
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	z-index: 6;
+	z-index: 1000;
 	width: 100%;
 	padding: 0 16px;
 	display: flex;
@@ -144,6 +144,16 @@
   padding: 16px 16px;
   font-weight: 400;
 }
+.editor {
+	padding-bottom: 106px;
+}
+.editor_valid_true {
+	padding-bottom: 64px;
+}
+.editor__item_space_bottom:last-of-type {
+	margin-bottom: 0;
+}
+
 @media (min-width: 1280px) {
 	.submit-bar {
 		display: flex;
@@ -151,6 +161,12 @@
 		align-items: center;
 		height: 76px;
 		border-top: 1px solid #E9ECEF;
+		position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 100;
 	}
 	.submit-bar__button {
 		margin-right: 8px;
@@ -210,9 +226,6 @@
 	.editor__item_touch_visible {
 		display: none;
 	}
-
-
-
 	.editor__item-time-dash {
 		line-height: 38px;
 	}

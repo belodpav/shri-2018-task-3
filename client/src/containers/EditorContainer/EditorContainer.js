@@ -5,8 +5,9 @@ import { bindActionCreators } from 'redux';
 import { getRecomendation, getRecomendation__2 } from '../../scripts/getRecomendation__process.js';
 import 'moment/locale/ru.js';
 import Editor from '../../components/Editor/Editor';
-
+ 
 import * as dateActions from './../../actions/DateActions';
+import * as eventActions from './../../actions/EventActions';
 
 moment.locale('ru');
 
@@ -17,7 +18,6 @@ class EditorContainer extends Component {
     
     const initState = {
       isModalRemove: false,
-      isModalCreate: false,
       isValid: false,
       date: date,
       eventId: event.Id,
@@ -56,10 +56,6 @@ class EditorContainer extends Component {
     }
   };
 
-  handleOnOk = () => {
-    this.props.onGoHome();
-  };
-
   handleOnRemoveButton = () => {
     this.setState({isModalRemove:true});
   };
@@ -85,6 +81,7 @@ class EditorContainer extends Component {
     };
 
     this.props.onRemoveEvent(event);
+    
     this.props.onGoHome();
   };
 
@@ -103,8 +100,10 @@ class EditorContainer extends Component {
     });
 
     this.props.onCreateEvent(event);
-    // Change it
-    this.setState({isModalCreate: true});
+
+    this.props.eventActions.setActiveEvent(event);
+    this.props.eventActions.showMessageCreatedEvent();
+    this.props.onGoHome();
   };
 
   handleOnSaveEvent = () => {
@@ -344,14 +343,12 @@ class EditorContainer extends Component {
       room,
       isValid,
       validateMessage,
-      isModalRemove,
-      isModalCreate 
+      isModalRemove
     } = this.state;
     let recoms = [];
     let isFreeRooms = true;
     const {
       handleOnUpdateEvents,
-      handleOnOk,
       handleOnRemoveButton,
       handleOnCancel,
       handleOnValidate,
@@ -371,6 +368,7 @@ class EditorContainer extends Component {
     } = this;
 
     className += cls ? ' ' + cls : '';
+    className += isValid ? ' editor_valid_true' : '';
     
     const data = {
       eventId: this.props.event.id || -99,
@@ -411,11 +409,9 @@ class EditorContainer extends Component {
         isFreeRooms={isFreeRooms}
         validateMessage={validateMessage}
         isModalRemove={isModalRemove}
-        isModalCreate={isModalCreate} 
         roomRecomendations={recoms}
         onGoHome={onGoHome}
         onUpdateEvents={handleOnUpdateEvents}
-        onOk={handleOnOk}
         onRemoveButton={handleOnRemoveButton}
         onCancel={handleOnCancel}
         onValidate={handleOnValidate}
@@ -443,7 +439,8 @@ function mapStateToProps (state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    dateActions: bindActionCreators(dateActions, dispatch)
+    dateActions: bindActionCreators(dateActions, dispatch),
+    eventActions: bindActionCreators(eventActions, dispatch)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditorContainer);

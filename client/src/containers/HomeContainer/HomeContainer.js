@@ -13,11 +13,25 @@ import '../../scripts/shortCutFollow.css';
 
 
 class HomeContainer extends Component {
-
+ 
   componentDidMount() {
+    
     // Activate ShortCut-Follow Title script
     shortCutFollowActivate();
+
+    const home = document.querySelector('.home');
+    home.addEventListener('scroll', this.handleClickOutToolTip);
+
   }
+ 
+  componentWillUnmout() {
+    const home = document.querySelector('.home');
+    home.removeEventListener('scroll', this.handleClickOutToolTip());
+  }
+
+  handleOnOk = () => {
+    this.props.eventActions.hideMessageCreatedEvent();
+  };
 
   handleClickOutToolTip = () => {
     const { isActive } = this.props.tooltip;
@@ -62,20 +76,23 @@ class HomeContainer extends Component {
   };
 
   render() {
-    const { activeEvent } = this.props.events;
+    const { activeEvent, isModalCreated } = this.props.events;
     const { date } = this.props.date;
     const isToolTipActive = this.props.tooltip.isActive;
     const { tooltip } = this.props;
+    const { handleOnOk, handleCreateNewEvent, handleClickOutToolTip } = this;
 
     
     return (
       <Home
         isToolTipActive={isToolTipActive}
+        isModalCreated={isModalCreated}
         date={date}
         activeEvent={activeEvent}
         tooltip={tooltip}
-        onCreateNewEvent={this.handleCreateNewEvent}
-        onClickOutToolTip={this.handleClickOutToolTip}
+        onOk={handleOnOk}
+        onCreateNewEvent={handleCreateNewEvent}
+        onClickOutToolTip={handleClickOutToolTip}
       />
     );
   }

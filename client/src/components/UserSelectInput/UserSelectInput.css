@@ -39,7 +39,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   
   transform: translateY(100%);
   border-radius: 4px;
@@ -91,6 +91,20 @@
 .react-autosuggest__section-title {
 
 }
+.react-autosuggest__suggestions-container::-webkit-scrollbar {
+  width: 16px;  
+}
+ 
+.react-autosuggest__suggestions-container::-webkit-scrollbar-track {
+  background-color: #fff;
+}   
+.react-autosuggest__suggestions-container::-webkit-scrollbar-thumb {
+  width: 8px;
+  background-clip: content-box;
+  border-radius: 100px;
+  border: 4px solid #fff;
+  background-color: #d5dfe9;
+}
 
 @media (min-width: 1280px) {
   .react-autosuggest__input {
@@ -111,25 +125,10 @@
     max-height: 136px;
     width: 100%;
   }
-  .react-autosuggest__suggestions-container::-webkit-scrollbar {
-      width: 16px;  
-  }
-   
-  .react-autosuggest__suggestions-container::-webkit-scrollbar-track {
-      background-color: #fff;
-  }   
-  .react-autosuggest__suggestions-container::-webkit-scrollbar-thumb {
-    width: 8px;
-    background-clip: content-box;
-    border-radius: 100px;
-    border: 4px solid #fff;
-    background-color: #d5dfe9;
-  }
+  
   .text-input_hovered_true .react-autosuggest__input::placeholder {
     font-size: 0;
   }
-
-
 }
 
 .autocomplete__icon {
@@ -139,7 +138,7 @@
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 1000;
+  z-index: 99;
   opacity: 1;
   cursor: pointer;
   background-color: #fff;

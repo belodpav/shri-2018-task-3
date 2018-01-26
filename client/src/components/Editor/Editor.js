@@ -12,8 +12,8 @@ import EditorItem from '../Editor/EditorItem';
 import EditorItemDate from '../Editor/EditorItemDate';
 import EditorItemTime from '../Editor/EditorItemTime';
 import EditorValidator from '../Editor/EditorValidator';
-
-import { ModalRemove, ModalCreate } from '../Modal/Modal';
+ 
+import { ModalRemove } from '../Modal/Modal';
 import { RoomItemCurrent, RoomItem } from '../RoomItem/RoomItem';
 
 import InputDate from '../InputDate/InputDate';
@@ -41,11 +41,9 @@ const Editor = (props) => {
 		isFreeRooms,
 		validateMessage,
 		isModalRemove,
-		isModalCreate,
 		roomRecomendations,
 		onGoHome,
     onUpdateEvents,
-    onOk,
     onRemoveButton,
     onCancel,
     onValidate,
@@ -131,7 +129,7 @@ const Editor = (props) => {
 					</EditorPersonsBox>
 				</EditorItem>
 				{ room.id ? 
-				<EditorItem className="editor__item_space_bottom" label="Выбранная переговорка">
+				<EditorItem className="editor__item_space_bottom" label="Ваша переговорка">
 					<RoomItemCurrent 
 						timeStart={dateStart.format('HH:mm')}
 						timeEnd={dateEnd.format('HH:mm')}
@@ -169,7 +167,7 @@ const Editor = (props) => {
 							Удалить встречу
 						</div>
 					</EditorItem>
-					<div className="editor__submit-bar_touch">
+					<div className="editor__submit-bar_touch" >
 						{isValid ? "" : <EditorValidator message={validateMessage} />}
 						<ButtonContainer  
 							onClick={onGoHome}
@@ -227,18 +225,8 @@ const Editor = (props) => {
 		</div>
 		{isModalRemove ?
 			<ModalRemove 
-						onCancel={onCancel}
-						onRemoveEvent={onRemoveEvent}
-			/>
-			: ""
-		}
-		{isModalCreate ?
-			<ModalCreate
-						onOk={onOk}
-						date={dateStart.format('D MMMM')}
-						timeRange={dateStart.format('HH:mm') + '—' + dateEnd.format('HH:mm')}
-						roomTitle={room.title}
-						roomFloor={room.floor}
+				onCancel={onCancel}
+				onRemoveEvent={onRemoveEvent}
 			/>
 			: ""
 		}

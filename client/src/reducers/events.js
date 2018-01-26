@@ -6,7 +6,9 @@ import {
   POST_EVENT_SUCCESS,
   POST_EVENT_ERROR,
   SET_EVENTS,
-  SET_ACTIVE_EVENT
+  SET_ACTIVE_EVENT,
+  SHOW_MESSAGE_CREATED_EVENT,
+  HIDE_MESSAGE_CREATED_EVENT
 } from '../constants/ActionTypes';
 
 const initialState = {
@@ -14,7 +16,8 @@ const initialState = {
   eventsBuffer: {},
   events: {},
   fetching: false,
-  activeEvent: {}
+  activeEvent: {},
+  isModalCreated: false
 };
 
 export default function events(state = initialState, action) {
@@ -44,6 +47,12 @@ export default function events(state = initialState, action) {
 
     case SET_ACTIVE_EVENT:
     return {...state, activeEvent: action.payload};
+
+    case SHOW_MESSAGE_CREATED_EVENT:
+    return {...state, isModalCreated: true};
+
+    case HIDE_MESSAGE_CREATED_EVENT:
+    return {...state, isModalCreated: false};
 
 
 		default:
