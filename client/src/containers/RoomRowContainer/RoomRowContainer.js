@@ -112,6 +112,7 @@ class RoomRowContainer extends Component {
 RoomRowContainer.propTypes = {
   name: PropTypes.string.isRequired,
   capacity: PropTypes.number.isRequired,
+  cls: PropTypes.string,
 };
 
 function mapStateToProps (state) {

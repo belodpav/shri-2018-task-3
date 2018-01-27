@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -433,14 +434,29 @@ class EditorContainer extends Component {
 
 }
 
+EditorContainer.propTypes = {
+  title: PropTypes.string.isRequired,
+  cls: PropTypes.string,
+  date: PropTypes.instanceOf(moment).isRequired,
+  event: PropTypes.object,
+  users: PropTypes.arrayOf(PropTypes.object),
+  events: PropTypes.object,
+  rooms: PropTypes.arrayOf(PropTypes.object),
+  onGoHome: PropTypes.func,
+  onSaveEvent: PropTypes.func,
+  onRemoveEvent: PropTypes.func
+};
+
 function mapStateToProps (state) {
   return {
   }
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     dateActions: bindActionCreators(dateActions, dispatch),
     eventActions: bindActionCreators(eventActions, dispatch)
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(EditorContainer);

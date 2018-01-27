@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import UserSelectInput from '../../components/UserSelectInput/UserSelectInput';
 import TextInputContainer from '../TextInputContainer/TextInputContainer';
 import { PersonSmall } from '../../components/Person/Person';
@@ -160,6 +161,12 @@ class UserSelectInputContainer extends Component {
     );
   }
 }
+
+UserSelectInputContainer.propTypes = {
+  placeholder: PropTypes.string,
+  list: PropTypes.arrayOf(PropTypes.object),
+  onSelected: PropTypes.func
+};
 
 export default UserSelectInputContainer;
 

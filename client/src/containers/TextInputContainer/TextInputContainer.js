@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput/TextInput';
 
 class TextInputContainer extends Component {
@@ -74,5 +74,13 @@ class TextInputContainer extends Component {
   }
 }
 
+TextInputContainer.propTypes = {
+  cls: PropTypes.string,
+  text: PropTypes.string,
+  hasClear: PropTypes.bool,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  onClear: PropTypes.func
+};
 
 export default TextInputContainer;

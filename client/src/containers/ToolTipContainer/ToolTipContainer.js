@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as toolTipActions from './../../actions/ToolTipActions';
@@ -47,15 +48,24 @@ class ToolTipContainer extends Component {
   }
 };
 
+ToolTipContainer.propTypes = {
+  style: PropTypes.object,
+  styleTriangle: PropTypes.object, 
+  event: PropTypes.object,
+  cls: PropTypes.string
+};
+
 function mapStateToProps (state) {
   return {
     tooltip: state.tooltip
   }
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     toolTipActions: bindActionCreators(toolTipActions, dispatch),
     pageActions: bindActionCreators(pageActions, dispatch)
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(ToolTipContainer);

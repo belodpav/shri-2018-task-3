@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -45,6 +46,9 @@ class ContentContainer extends Component {
   }
 }
 
+ContentContainer.propTypes = {
+  cls: PropTypes.string
+};
 
 function mapStateToProps (state) {
   return {

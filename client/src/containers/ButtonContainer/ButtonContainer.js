@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Button from '../../components/Button/Button';
 
 class ButtonContainer extends Component {
@@ -92,6 +94,14 @@ class ButtonContainer extends Component {
     );
 
   }
+}
+
+ButtonContainer.propTypes = {
+  cls: PropTypes.string,
+  theme: PropTypes.oneOf(['normal', 'active']),
+  touchHidden: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func
 }
 
 export default ButtonContainer;

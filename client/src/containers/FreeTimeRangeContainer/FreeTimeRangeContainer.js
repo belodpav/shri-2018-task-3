@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventActions from './../../actions/EventActions';
@@ -111,14 +112,24 @@ class FreeTimeRangeContainer extends Component {
   }
 }
 
+FreeTimeRangeContainer.propTypes = {
+  width: PropTypes.string.isRequired,
+  cls: PropTypes.string,
+  event: PropTypes.object,
+  onFreeItemMouseEnter: PropTypes.func,
+  onFreeItemMouseLeave: PropTypes.func
+};
+
 function mapStateToProps (state) {
   return {
   }
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     eventActions: bindActionCreators(eventActions, dispatch),
     pageActions: bindActionCreators(pageActions, dispatch)
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(FreeTimeRangeContainer);

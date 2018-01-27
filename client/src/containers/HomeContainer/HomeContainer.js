@@ -98,6 +98,7 @@ class HomeContainer extends Component {
   }
 }
 
+
 function mapStateToProps(state) {
   return {
     tooltip: state.tooltip,
@@ -105,6 +106,7 @@ function mapStateToProps(state) {
     date: state.date
   }
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     toolTipActions: bindActionCreators(toolTipActions, dispatch),

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -114,14 +115,20 @@ class DateControlContainer extends Component {
   }
 }
 
+DateControlContainer.propTypes = {
+  cls: PropTypes.string
+};
+
 function mapStateToProps (state) {
   return {
     date: state.date
   }
 }
+
 function mapDispatchToProps(dispatch) {
   return {
     dateActions: bindActionCreators(dateActions, dispatch)
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(DateControlContainer);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import IconContainer from '../IconContainer/IconContainer';
 
 class TextInputClearContainer extends Component {
@@ -13,5 +14,10 @@ class TextInputClearContainer extends Component {
     );
   }
 }
+
+TextInputClearContainer.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func
+};
 
 export default TextInputClearContainer;

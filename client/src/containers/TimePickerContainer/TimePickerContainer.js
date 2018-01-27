@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TimePicker from '../../components/TimePicker/TimePicker';
 
 class TimePickerContainer extends Component {
@@ -21,8 +22,6 @@ class TimePickerContainer extends Component {
     this.setState({
       value: value
     });
-
-    console.log('hey');
  
   };
     
@@ -41,7 +40,6 @@ class TimePickerContainer extends Component {
       value: newValue
     });
     
-    console.log(newValue);
     onChange(newValue);
   };
   
@@ -76,6 +74,13 @@ class TimePickerContainer extends Component {
   }
 }
 
+TimePickerContainer.propTypes = {
+  cls: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  minTime: PropTypes.string,
+  maxTime: PropTypes.string
+};
 
 export default TimePickerContainer;
 
@@ -83,8 +88,14 @@ function strTimeToMinutes(str) {
     if (str.length !== 5 || str[2] !== ':') return NaN;
     
     const list = str.split(':');
-    let hour = +list[0];
-    let minutes = hour*60 + +list[1];
+    const firstN = +list[0];
+    const secondN = +list[1];
+
+    if (firstN < 0 || firstN > 23) return NaN;
+    if (secondN < 0 || secondN > 59) return NaN;
+
+    let hour = firstN;
+    let minutes = hour*60 + secondN;
     
     return minutes;
 }
