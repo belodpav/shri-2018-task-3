@@ -1,4 +1,7 @@
-
+/**
+ * This function activates shortcut titles of rooms and floors
+ * for horizontal scrolling on mobile devices
+ */
 const shortCutFollowActivate = function() {
 	var app = document.querySelector('.home');
 	var appAside = document.querySelector('.home__aside');

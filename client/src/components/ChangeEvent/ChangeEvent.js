@@ -17,7 +17,8 @@ const ChangeEvent = (props) => {
     rooms,
     onGoHome,
     onSaveEvent,
-    onRemoveEvent
+    onRemoveEvent,
+    onUpdateChangedEvents
   } = props;
 		
 	return (
@@ -37,6 +38,7 @@ const ChangeEvent = (props) => {
 					onGoHome={onGoHome}
 					onSaveEvent={onSaveEvent}
 					onRemoveEvent={onRemoveEvent}
+          onUpdateChangedEvents={onUpdateChangedEvents}
 				/>
 			</div>
 		</div>

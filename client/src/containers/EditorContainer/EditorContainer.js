@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import moment from 'moment'; 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getRecomendation, getRecomendation__2 } from '../../scripts/getRecomendation__process.js';
+import { getRecomendation, getRecomendation__2 } from '../../scripts/getRecomendation.js';
 import 'moment/locale/ru.js';
 import Editor from '../../components/Editor/Editor';
  
@@ -116,6 +116,11 @@ class EditorContainer extends Component {
       users: this.state.members,
       room: this.state.room
     };
+
+    const changedEvents = this.state.changedEvents;
+    changedEvents.forEach( event => {
+      this.props.onUpdateChangedEvents(event);
+    });
    
     this.props.onSaveEvent(event);
   };

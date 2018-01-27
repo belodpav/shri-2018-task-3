@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import './Editor.css';
-
+ 
 import CircleButtonContainer from '../../containers/CircleButtonContainer/CircleButtonContainer';
 
 import EditorPersonsBox from '../Editor/EditorPersonsBox';

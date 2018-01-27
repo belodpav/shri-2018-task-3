@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './RoomItem.css';
+import './RoomItem.css'; 
 
 const RoomItem = ({onSetRoom, onUpdateEvents, changedEvents, timeStart, timeEnd, room}) => {
   function handleClick() {

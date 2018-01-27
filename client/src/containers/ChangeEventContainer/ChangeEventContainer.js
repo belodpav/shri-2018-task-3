@@ -9,6 +9,11 @@ import ChangeEvent from '../../components/ChangeEvent/ChangeEvent';
 
 class ChangeEventContainer extends Component {
   
+  handleUpdateChangedEvents = (event) => {
+    const { updateEvent } = this.props.eventActions;
+    updateEvent(event);
+  };
+
   handleRemoveEvent = (event) => {
     const { removeEvent } = this.props.eventActions;
     removeEvent(event);
@@ -29,7 +34,7 @@ class ChangeEventContainer extends Component {
     const { openHomePage } = this.props.pageActions;
     const { users } = this.props.users;
     const { date } = this.props.date;
-    const { handleSaveEvent, handleRemoveEvent } = this;
+    const { handleSaveEvent, handleRemoveEvent, handleUpdateChangedEvents } = this;
     
     return (
       <ChangeEvent
@@ -43,6 +48,7 @@ class ChangeEventContainer extends Component {
         onGoHome={openHomePage}
         onSaveEvent={handleSaveEvent}
         onRemoveEvent={handleRemoveEvent}
+        onUpdateChangedEvents={handleUpdateChangedEvents}
       />
     );
   }
