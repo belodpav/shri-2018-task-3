@@ -36,7 +36,7 @@ const UserSelectInput = (props) => {
         inputProps={inputProps}
         shouldRenderSuggestions={ () => true }
         focusInputOnSuggestionClick={false}
-        highlightFirstSuggestion={true}
+        highlightFirstSuggestion={false}
         renderInputComponent={renderInputComponent}
       />
       <IconContainer cls={iconClassName} onClick={onHideSuggestions} type="arrow-down" />

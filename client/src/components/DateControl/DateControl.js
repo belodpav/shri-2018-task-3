@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.css';
 
 import CircleButtonContainer from '../../containers/CircleButtonContainer/CircleButtonContainer';
-
+ 
 class DatePickerButton extends Component {
     
   render() {
@@ -16,7 +16,8 @@ class DatePickerButton extends Component {
         className="react-datepicker__open-btn"
         onClick={this.props.onClick}      
       >
-        {this.props.valueN}
+        <span className="">{this.props.valueN}</span>
+        <span className="react-datepicker__open-btn-week-day">{this.props.valueW}</span>
       </button>
    );
   }
@@ -28,6 +29,7 @@ const DateControl = (props) => {
     className,
     date,
     dateStr,
+    dateStrDay,
     popperPlacement,
     numberOfMonths,
     onClickPrevDate,
@@ -54,7 +56,7 @@ const DateControl = (props) => {
           onChange={onChange}
           monthsShown={numberOfMonths}
           popperPlacement={popperPlacement}
-          customInput={<DatePickerButton valueN={dateStr} />}   
+          customInput={<DatePickerButton valueN={dateStr} valueW={dateStrDay} />}   
         />
       </div>
       <CircleButtonContainer

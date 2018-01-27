@@ -11,7 +11,6 @@
   display: flex;
 }
 .react-datepicker__open-btn {
-
   max-width: 150px;
   text-align: center;
   height: 20px;
@@ -25,6 +24,10 @@
   letter-spacing: 0;
   font-family: Neue Helvetica, Open Sans, Helvetica, Arial, sans-serif;
   background-color: transparent;
+  white-space: nowrap;
+}
+.react-datepicker__open-btn-week-day {
+  text-transform: capitalize;
 }
 
 .react-datepicker__open-btn:focus,

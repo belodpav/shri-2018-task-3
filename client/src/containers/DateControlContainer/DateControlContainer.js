@@ -89,12 +89,21 @@ class DateControlContainer extends Component {
     className += focused ? ' date-control_focused_true' : '';
 
     let dateStr = date.calendar(null, {
-        sameDay: 'D MMM · [Сегодня]',
-        nextDay: 'D MMM · [Завтра]',
-        nextWeek: 'D MMM · dd',
-        lastDay: 'D MMM · [Вчера]',
-        lastWeek: 'D MMM · dd',
-        sameElse: 'D MMM · dd'
+        sameDay: 'D MMM · ',
+        nextDay: 'D MMM · ',
+        nextWeek: 'D MMM · ',
+        lastDay: 'D MMM · ',
+        lastWeek: 'D MMM · ',
+        sameElse: 'D MMM · '
+    }).replace(/\./,'');
+
+    let dateStrDay = date.calendar(null, {
+        sameDay: '[Сегодня]',
+        nextDay: '[Завтра]',
+        nextWeek: 'dd',
+        lastDay: '[Вчера]',
+        lastWeek: 'dd',
+        sameElse: 'dd'
     }).replace(/\./,'');
 
     return (
@@ -102,6 +111,7 @@ class DateControlContainer extends Component {
         className={className}
         date={date}
         dateStr={dateStr}
+        dateStrDay={dateStrDay}
         onChange={handleOnChange}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
