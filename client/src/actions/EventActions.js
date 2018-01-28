@@ -252,7 +252,13 @@ export function getEvents(dateRange, isAllDay) {
 			}
 			`;
 
-		fetch(query)
+		fetch(query,
+			{ 
+				headers: {
+					'pragma' : 'no-cache',
+					'cache-control' : 'no-cache'
+				}
+			})
 			.then(res => res.json())
 			.then(response => {	
 				// Convert ISO Date strings to Moment() date objects
