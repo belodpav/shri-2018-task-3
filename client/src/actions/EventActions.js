@@ -292,10 +292,22 @@ export function getEvents(dateRange, isAllDay) {
 	}
 }
 
+/**
+ * Returns Moment object for the date
+ *
+ * @param {string} dateStr
+ * @return {Moment}
+ */
 function strDateToMoment(dateStr) {
 	return moment(dateStr);
 }
 
+/**
+ * Converts events array to an object with events sorted by room ID
+ *
+ * @param {[Event]} events
+ * @return {Object}
+ */
 function toListByRoom(events) {
   const eventsByRoomId = {};
 
@@ -311,7 +323,12 @@ function toListByRoom(events) {
   return eventsByRoomId;
 }
 
-
+/**
+ * Return events array sorted by date
+ *
+ * @param {[Event]} events
+ * @return {[Event]}
+ */
 function sortEventsByDate(events) {
   const sEvents = [ ...events];
   sEvents.sort( (a, b) =>  {

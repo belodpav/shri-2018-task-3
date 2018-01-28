@@ -28,6 +28,32 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
+
+      .welcome__error-box {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -100%);
+        padding: 10px;
+        max-width: 300px;
+        width: 100%;
+        border-radius: 10px;
+        background: rgba(0,0,0,.8);
+        color: #fff;
+        transition: all .1s ease;
+      }
+      .welcome__error-box_visible_true {
+        transform: translate(-50%, 20px);
+      }
+      @media (min-width: 1280px) {
+        .welcome__error-box {
+          left: 20px;
+          transform: translate(0, -100%);
+        }
+        .welcome__error-box_visible_true {
+          transform: translate(0, 20px);
+        }
+      }
     </style>
   </head>
   <body>

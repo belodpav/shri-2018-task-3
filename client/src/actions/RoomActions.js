@@ -4,6 +4,10 @@ import { getUsers } from '../actions/UserActions';
 import shortCutFollowActivate from '../scripts/shortCutFollow';
 import moment from 'moment';
 
+function parseJSON(response) {
+  return response.json();
+}
+
 export function getRooms(dateRange) {
   return (dispatch) => {
     dispatch({
@@ -12,7 +16,19 @@ export function getRooms(dateRange) {
 
     const url = '/graphgl?query={rooms{id,title,capacity,floor}}';
     fetch(url)
-      .then(res => res.json())
+      .then( response => {
+      
+      if (response.status >= 200 && response.status < 300) {
+        return response
+      } else {
+
+        var error = new Error(response.statusText)
+        error.response = response
+        throw error
+      }
+
+      })
+      .then(parseJSON)
       .then(response => {
         
         dispatch({
@@ -35,6 +51,8 @@ export function getRooms(dateRange) {
         const startRange = dateRange.dateStart;
         const endRange = dateRange.dateEnd;
         
+
+
         // Activate ShortCuts names of rooms
         shortCutFollowActivate();
 
@@ -44,15 +62,21 @@ export function getRooms(dateRange) {
 
       })
       .catch( error => {
+        console.log(error);
         dispatch({
           type: types.GET_ROOMS_ERROR,
-          payload: []
+          payload: error.message
         })
       })
   }
 }
 
-
+/**
+ * Returns array of Floor numbers
+ * 
+ * @param {Object} roomsByFloor - An Object with rooms sorted by Floor number
+ * @return {[number]}
+ */
 function converToFloorList(roomsByFloor) {
   const floors = [];
   for (let key in roomsByFloor) {
@@ -65,6 +89,12 @@ function converToFloorList(roomsByFloor) {
   return floors;
 }
 
+/**
+ * Returns an Object with rooms sorted by Floor number
+ * 
+ * @param {[Room]} rooms
+ * @return {Object}
+ */
 function toListByFloor(rooms) {
   const roomsByFloor = {};
 

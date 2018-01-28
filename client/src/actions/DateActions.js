@@ -14,6 +14,7 @@ export function setDate(date) {
     const startRange = moment([date.year(), date.month(), date.date(), 8, 0, 0, 0]);
     const endRange = moment([date.year(), date.month(), date.date(), 23, 0, 0, 0]);
 
+    // Update events in store for the chosen date
     dispatch(getEvents({start: startRange, end: endRange}, true));   
   };
 }

@@ -1,5 +1,4 @@
 import * as types from '../constants/ActionTypes';
-import moment from 'moment';
 
 export function showToolTip() {
   return (dispatch) => {

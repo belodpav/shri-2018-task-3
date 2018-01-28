@@ -30,8 +30,6 @@ export const SET_EVENTS = 'SET_EVENTS';
 
 export const SET_DATE = 'SET_DATE';
 
-export const UPDATE_CURRENT_TIME = 'UPDATE_CURRENT_TIME'; 
-
 export const OPEN_HOME_PAGE = 'OPEN_HOME_PAGE';
 export const OPEN_CHANGE_EVENT_PAGE = 'OPEN_CHANGE_EVENT_PAGE';
 export const OPEN_NEW_EVENT_PAGE = 'OPEN_NEW_EVENT_PAGE';

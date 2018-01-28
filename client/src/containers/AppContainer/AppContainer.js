@@ -9,8 +9,7 @@ import 'moment/locale/ru.js';
 moment.locale('ru');
 
 class AppContainer extends Component {
-
-  componentDidMount() {
+  componentWillMount() {
     const { getRooms } = this.props.roomActions;
     const date = moment();
     // Setting up Time Ranges
@@ -19,29 +18,52 @@ class AppContainer extends Component {
 
     // Fetching Rooms data from server
     getRooms({dateStart: startRange, dateEnd: endRange});
-
-    // App loaded. Let's remove welcome window
+  }
+  componentDidMount() {
+    
     setTimeout( () => { 
       const welcomeWindow = document.getElementById('welcome');
       welcomeWindow.className +=' welcome_state_hidden';
-    }, 2000);
+    }, 1000);
+  }
+
+  checkErrorPattern(text) {
+    switch(text) {
+
+      case 'Failed to fetch':
+        return 'Не удалось получить данные с сервера. Проверьте соединение с интернетом.';
+
+      case 'Internal Server Error':
+        return 'Внутрення ошибка сервера. Попробуйте обновить страницу через несколько минут.';
+
+      default:
+        return text
+    }
+    return text;
   }
 
   render() {
     const { page } = this.props.page;
-    
+    const { isFetched } = this.props.rooms;
+    const { errorMessage } = this.props.rooms;
+    let error = this.checkErrorPattern(errorMessage);
+
     return (
       <App
         page={page}
+        isFetched={isFetched}
+        errorMessage={error}
       />
     );
+
   }
 }
 
 
 function mapStateToProps (state) {
   return {
-    page: state.page
+    page: state.page,
+    rooms: state.rooms
   }
 }
 function mapDispatchToProps(dispatch) {

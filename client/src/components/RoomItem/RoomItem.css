@@ -53,6 +53,9 @@
     height: 37px;
     cursor: pointer;
   }
+  .room-item_state_current { 
+    cursor: default;
+  }
   .room-item__time-range {
     margin-right: 16px;
     font-size: 13px;

@@ -31,7 +31,14 @@ export function getDiagramData() {
   }
 }
 
-
+/**
+ * Returns an object for a slot. The object contains information
+ * about event and width for the slot.
+ *
+ * @param {Event} event
+ * @param {String} width
+ * @return {Object}
+ */
 function getSlot(event, width) {
   return {
     event: event,
@@ -39,7 +46,15 @@ function getSlot(event, width) {
   }
 }
 
-
+/**
+ * Returns an array with free event slots in the specified time range
+ * for the chosen room
+ *
+ * @param {Moment} dateStart
+ * @param {Moment} dateEnd
+ * @param {Room} room
+ * @return {[Object]}
+ */
 function getFreeSlots(dateStart, dateEnd, room) {
   const freeSlots = [];
   let oldStart = dateStart.clone();
@@ -67,6 +82,14 @@ function getFreeSlots(dateStart, dateEnd, room) {
   return freeSlots;
 }
 
+/**
+ * Returns Event plain object 
+ *
+ * @param {Moment} dateStart
+ * @param {Moment} dateEnd
+ * @param {Room} room
+ * @return {Event}
+ */
 function getFreeEvent(dateStart, dateEnd, room) {
   return {
     title: '',
@@ -77,6 +100,13 @@ function getFreeEvent(dateStart, dateEnd, room) {
   }
 }
 
+/**
+ * Returns width for the time range in % for the diagram 
+ *
+ * @param {Moment} dateStart
+ * @param {Moment} dateEnd
+ * @return {Number}
+ */
 function getWidth(dateStart, dateEnd) {
   const start = normalize(TIME_START, TIME_END, dateStart);
   const end = normalize(TIME_START, TIME_END, dateEnd);
@@ -84,13 +114,28 @@ function getWidth(dateStart, dateEnd) {
   return end - start;
 }
 
+/**
+ * Returns position in % within the time range 
+ *
+ * @param {Number} min
+ * @param {Number} max
+ * @param {Moment} x
+ * @return {Number} 
+ */
 function normalize(min, max, x) {
   const hours = x.hour() - min;
   const minutes = x.minutes() + hours*60;
   return 100 * ( minutes / ( (max - min)*60 ) );
 }
 
-
+/**
+ * Returns an array with slots for the choosen room and date
+ * 
+ * @param {Room} room
+ * @param {Moment} date
+ * @param {[Event]} events
+ * @return {[Object]}
+ */
 function getRoomDiagram(room, date, events) {
   let timeRanges = [];
   let lastEnd = moment([date.year(), date.month(), date.date(), 8, 0, 0, 0]);

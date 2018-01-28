@@ -13,7 +13,7 @@ import {
 
 const App = (props) => {
 
-  const { page } = props;
+  const { page, isFetched, errorMessage } = props;
   let appChild;
 
   switch(page) {
@@ -28,11 +28,20 @@ const App = (props) => {
       break;
   }
 
-  return (
-    <div className="App">
-      {appChild}
+  if (isFetched) {
+    return (
+      <div className="App">
+        {appChild}
+      </div>
+    );
+  } else {
+    return (
+    <div id="welcome" className="welcome">
+      <img className="welcome__logo" src="welcome__logo.svg"/>
+      <div className={ "welcome__error-box" + (errorMessage ? " welcome__error-box_visible_true" : "") }>{errorMessage}</div>
     </div>
-  );
+    );
+  }
 }
 
 export default App;
