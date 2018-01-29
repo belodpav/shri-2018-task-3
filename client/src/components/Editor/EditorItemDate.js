@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const EditorItemDate = ({className, label, children}) => {
 	return (

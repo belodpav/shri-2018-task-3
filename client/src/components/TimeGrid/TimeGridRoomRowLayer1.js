@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TimeGrid from './TimeGrid';
 import TimeGridColumn from './TimeGridColumn';
 
@@ -19,8 +19,6 @@ const TimeGridRoomRowLayer1 = ({children, className, title}) => {
 				{columnsList}
 				{children}
 			</div>
-			
-			
 		</TimeGrid>
 	);
 };

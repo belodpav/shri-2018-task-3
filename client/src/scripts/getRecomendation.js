@@ -1,4 +1,3 @@
-import moment from 'moment';
 
 /**
  *
@@ -10,7 +9,6 @@ import moment from 'moment';
  */
 export function getRecomendation(data) {
   const { eventId, timeStart, timeEnd, members, rooms, events } = data;
-  let usersSumWay = 0;
   let roomsAvailable;
   let recomendations = [];
 
@@ -120,7 +118,7 @@ function getSwapObj(targetRoom, freeRoom, members, eventsByRoom, events) {
 function toListByRoom(events) {
   const eventsByRoomId = {};
 
-  events.map( event => {
+  events.forEach( event => {
     const copyEvent = {...event};
     const roomId = copyEvent.room.id;
     if (eventsByRoomId[roomId]) {

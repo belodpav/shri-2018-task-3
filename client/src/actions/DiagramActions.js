@@ -140,7 +140,7 @@ function getRoomDiagram(room, date, events) {
   let timeRanges = [];
   let lastEnd = moment([date.year(), date.month(), date.date(), 8, 0, 0, 0]);
   const dayEnd = moment([date.year(), date.month(), date.date(), 23, 0, 0, 0]);
-  let start, end, width;
+  let width;
 
   if (events.length === 0) {
     timeRanges.push(...getFreeSlots( lastEnd, dayEnd, room ));

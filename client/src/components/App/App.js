@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
- 
+
 import HomeContainer from '../../containers/HomeContainer/HomeContainer';
 import ChangeEventContainer from '../../containers/ChangeEventContainer/ChangeEventContainer';
 import NewEventContainer from '../../containers/NewEventContainer/NewEventContainer';
@@ -26,6 +26,8 @@ const App = (props) => {
     case NEW_EVENT_PAGE:
       appChild = <NewEventContainer />;
       break;
+    default:
+      break;
   }
 
   if (isFetchedInit) {
@@ -48,7 +50,7 @@ const App = (props) => {
   } else {
     return (
     <div id="welcome" className="welcome">
-      <img className="welcome__logo" src="welcome__logo.svg"/>
+      <img className="welcome__logo" src="welcome__logo.svg" alt="Yandex"/>
       <div className={ "welcome__error-box" + (errorMessage ? " welcome__error-box_visible_true" : "") }>{errorMessage}</div>
     </div>
     );

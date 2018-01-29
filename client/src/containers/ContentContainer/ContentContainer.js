@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Content from '../../components/Content/Content';
 import Floor from '../../components/Floor/Floor';
 

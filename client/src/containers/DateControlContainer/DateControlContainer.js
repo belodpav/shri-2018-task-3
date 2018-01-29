@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as toolTipActions from './../../actions/ToolTipActions';
 import * as dateActions from './../../actions/DateActions';
 import DateControl from '../../components/DateControl/DateControl';
 
@@ -83,7 +81,6 @@ class DateControlContainer extends Component {
       handleOnBlur,
       handleOnChange
     } = this;
-    const { setDate } = this.props.dateActions;
 
     className += ' ' + cls;
     className += focused ? ' date-control_focused_true' : '';

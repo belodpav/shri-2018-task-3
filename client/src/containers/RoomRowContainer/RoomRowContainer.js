@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {TIME_START, TIME_END} from '../../constants/constants';
 import Meeting from '../../components/Meeting/Meeting';
 import FreeTimeRangeContainer from '../FreeTimeRangeContainer/FreeTimeRangeContainer';
 import RoomRow from '../../components/RoomRow/RoomRow';
@@ -85,8 +83,6 @@ class RoomRowContainer extends Component {
     const { cls, id, name, capacity } = this.props;
     const { diagram } = this.props.diagram;
     const { getDiagramItems, getStringCapacity } = this;
-    const { room } = this.props.storeEvents.activeEvent;
-    const isActiveTooltip = this.props.tooltip.isActive;
     const roomData = getDiagramItems(id, diagram);
     const { isActive } = this.state;
 

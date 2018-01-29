@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './TextInput.css';
 import TextInputClearContainer from '../../containers/TextInputClearContainer/TextInputClearContainer';
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ToolTip.css';
  
 import { Person } from '../Person/Person';

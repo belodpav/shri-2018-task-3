@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './Person.css';
 
@@ -6,7 +6,7 @@ import './Person.css';
 const Person = ({name, avatarUrl, homeFloor}) => (
 	<div className="person">
 		<div className="person__avatar">
-			<img className="person__avatar-img" src={avatarUrl} />
+			<img className="person__avatar-img" src={avatarUrl} alt={name} />
 		</div>
 		<div className="person__name">
 			{name}
@@ -17,7 +17,7 @@ const Person = ({name, avatarUrl, homeFloor}) => (
 const PersonSmall = ({name, avatarUrl, homeFloor}) => (
   <div className="person person_size_small">
     <div className="person__avatar">
-      <img className="person__avatar-img" src={avatarUrl} />
+      <img className="person__avatar-img" src={avatarUrl} alt={name} />
     </div>
     <div className="person__name">
       {name}

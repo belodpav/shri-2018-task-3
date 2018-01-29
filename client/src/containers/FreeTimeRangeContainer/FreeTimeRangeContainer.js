@@ -5,10 +5,6 @@ import { bindActionCreators } from 'redux';
 import * as eventActions from './../../actions/EventActions';
 import * as pageActions from './../../actions/PageActions';
 import FreeTimeRange from '../../components/FreeTimeRange/FreeTimeRange';
-import {
-  HOME_PAGE,
-  NEW_EVENT_PAGE
-} from '../../constants/appConstants';
 
 
 class FreeTimeRangeContainer extends Component {

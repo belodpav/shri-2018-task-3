@@ -2,7 +2,6 @@ import * as types from '../constants/ActionTypes';
 import { getEvents } from '../actions/EventActions';
 import { getUsers } from '../actions/UserActions';
 import shortCutFollowActivate from '../scripts/shortCutFollow';
-import moment from 'moment';
 
 function parseJSON(response) {
   return response.json();
@@ -98,7 +97,7 @@ function converToFloorList(roomsByFloor) {
 function toListByFloor(rooms) {
   const roomsByFloor = {};
 
-  rooms.map( room => {
+  rooms.forEach( room => {
     const floor = room.floor;
     if (roomsByFloor[floor]) {
       roomsByFloor[floor].push(room);

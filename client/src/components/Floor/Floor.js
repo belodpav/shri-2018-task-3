@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Floor.css';
 import RoomRowContainer from '../../containers/RoomRowContainer/RoomRowContainer';
 import TimeGridFloorHeader from '../TimeGrid/TimeGridFloorHeader';

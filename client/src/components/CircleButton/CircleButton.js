@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import IconContainer from '../../containers/IconContainer/IconContainer';
 import './CircleButton.css';
 

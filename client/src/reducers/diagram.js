@@ -2,8 +2,6 @@ import {
   GET_DIAGRAM_DATA
 } from '../constants/ActionTypes';
 
-import moment from 'moment';
-
 const initState = {
   diagram: {}
 };

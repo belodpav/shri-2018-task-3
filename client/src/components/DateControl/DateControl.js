@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import './DateControl.css';
 
 import DatePicker from 'react-datepicker';

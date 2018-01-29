@@ -22,10 +22,7 @@ class ToolTipContainer extends Component {
   }
 
   render() {
-    let className = 'tooltip';
-    let { top, left } = this.props.tooltip;
-    let triangleTop = 0;
-    let triangleLeft = '50%';
+    let className = 'tooltip'; 
     const { cls, style, styleTriangle, event } = this.props;
     let membersCountStr;
     const { handleOnEditClick, generateMemberCountStr } = this;

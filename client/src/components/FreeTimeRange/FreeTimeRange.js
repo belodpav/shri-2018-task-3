@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './FreeTimeRange.css';
 
 const FreeTimeRange = (props) => {
@@ -7,11 +7,7 @@ const FreeTimeRange = (props) => {
     className,
     onClick,
     onMouseEnter,
-    onMouseLeave,
-    onMouseDown,
-    onMouseUp,
-    onFocus,
-    onBlur
+    onMouseLeave
   } = props;
 
 	return (

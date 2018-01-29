@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './NewEvent.css';
 import Header from '../Header/Header';
 import Logo from '../Logo/Logo';

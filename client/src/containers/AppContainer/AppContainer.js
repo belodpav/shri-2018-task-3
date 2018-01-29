@@ -37,9 +37,8 @@ class AppContainer extends Component {
         return 'Внутрення ошибка сервера. Попробуйте обновить страницу через несколько минут.';
 
       default:
-        return text
+        return text;
     }
-    return text;
   }
 
   render() {

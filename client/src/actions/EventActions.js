@@ -334,7 +334,7 @@ function strDateToMoment(dateStr) {
 function toListByRoom(events) {
   const eventsByRoomId = {};
 
-  events.map( event => {
+  events.forEach( event => {
     const roomId = event.room.id;
     if (eventsByRoomId[roomId]) {
       eventsByRoomId[roomId].push(event);

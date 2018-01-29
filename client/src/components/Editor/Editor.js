@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import moment from 'moment';
+import React from 'react';
 import './Editor.css';
  
 import CircleButtonContainer from '../../containers/CircleButtonContainer/CircleButtonContainer';
@@ -46,7 +45,6 @@ const Editor = (props) => {
     onUpdateEvents,
     onRemoveButton,
     onCancel,
-    onValidate,
     onRemoveEvent,
     onCreateEvent,
     onSaveEvent,

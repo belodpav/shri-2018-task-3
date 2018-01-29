@@ -1,16 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Autosuggest from 'react-autosuggest';
-import { PersonSmall } from '../Person/Person';
 import './UserSelectInput.css';
-import TextInputContainer from '../../containers/TextInputContainer/TextInputContainer';
 import IconContainer from '../../containers/IconContainer/IconContainer';
 
 const UserSelectInput = (props) => {
   const {
-    value,
     suggestions,
-    onChange,
-    onClear,
     onHideSuggestions,
     onSuggestionsFetchRequested,
     onSuggestionsClearRequested,

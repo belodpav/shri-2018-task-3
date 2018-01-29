@@ -124,7 +124,6 @@ class UserSelectInputContainer extends Component {
   }
 
   render() {
-    let className='';
     const { value, suggestions, opened } = this.state;
     const {
       handleOnHideSuggestions,
@@ -137,7 +136,7 @@ class UserSelectInputContainer extends Component {
       handleOnClear,
       renderInputComponent
     } = this;
-    const { list, placeholder } = this.props;
+    const { placeholder } = this.props;
     const inputProps = {
       placeholder: placeholder,
       value,

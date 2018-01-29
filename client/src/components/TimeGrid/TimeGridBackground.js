@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TimeGrid from './TimeGrid';
 import TimeGridColumn from './TimeGridColumn';
 

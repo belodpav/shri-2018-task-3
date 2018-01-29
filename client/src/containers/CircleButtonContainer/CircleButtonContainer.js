@@ -62,7 +62,6 @@ class CircleButtonContainer extends Component {
       onClick,
       cls,
       disabled,
-      children,
       touchHidden,
       size,
       hasIcon,

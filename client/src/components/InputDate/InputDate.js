@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import IconContainer from '../../containers/IconContainer/IconContainer';
 import './InputDate.css';
