@@ -16,8 +16,10 @@ const initialState = {
   eventsBuffer: {},
   events: {},
   fetching: false,
+  isFetched: false,
   activeEvent: {},
-  isModalCreated: false
+  isModalCreated: false,
+  errorMessage: ''
 };
 
 export default function events(state = initialState, action) {
@@ -28,10 +30,22 @@ export default function events(state = initialState, action) {
 			return {...state, dateRange: action.payload, fetching: true};
 
 		case GET_EVENTS_SUCCESS:
-			return {...state, eventsBuffer: action.payload, fetching: false};
+			return {
+        ...state,
+        eventsBuffer: action.payload,
+        fetching: false,
+        isFetched: true,
+        errorMessage: ''
+      };
 
     case GET_EVENTS_ERROR:
-      return {...state, events: action.payload, fetching: false};
+      return {
+        ...state,
+        events: [],
+        errorMessage: action.payload,
+        fetching: false,
+        isFetched: false
+      };
 
     case POST_EVENT_REQUEST:
       return {...state, fetching: true};

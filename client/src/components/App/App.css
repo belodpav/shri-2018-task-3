@@ -1,0 +1,31 @@
+.App {
+  //position: relative;
+ // overflow: hidden;
+}
+
+.App__error-box {
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  z-index: 10000;
+  transform: translate(50%, 100%);
+  padding: 10px;
+  max-width: 300px;
+  width: 100%;
+  border-radius: 10px;
+  background: rgba(0,0,0,.8);
+  color: #fff;
+  transition: all .1s ease;
+}
+.App__error-box_visible_true {
+  transform: translate(50%, -30px);
+}
+@media (min-width: 1280px) {
+  .App__error-box {
+    right: 20px;
+    transform: translate(0, 100%);
+  }
+  .App__error-box_visible_true {
+    transform: translate(0, -20px);
+  }
+}

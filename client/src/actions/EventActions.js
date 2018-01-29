@@ -3,6 +3,11 @@ import moment from 'moment';
 
 import { getDiagramData } from '../actions/DiagramActions';
 
+
+function parseJSON(response) {
+  return response.json();
+}
+
 export function createEvent(event) {
 	return (dispatch) => {
 			dispatch({
@@ -45,7 +50,7 @@ export function createEvent(event) {
 				   	}
 
 				 )
-			.then(res => res.json())
+			.then(parseJSON)
 			.then(response => {	
 			
 				// Dispatch GET_EVENTS_SUCCESS
@@ -100,7 +105,7 @@ export function removeEvent(event) {
 				   	}
 
 				 )
-			.then(res => res.json())
+			.then(parseJSON)
 			.then(response => {	
 
 				dispatch({
@@ -168,7 +173,7 @@ export function updateEvent(event) {
 				   	}
 
 				 )
-			.then(res => res.json())
+			.then(parseJSON)
 			.then(response => {	
 
 				dispatch({
@@ -259,7 +264,19 @@ export function getEvents(dateRange, isAllDay) {
 					'cache-control' : 'no-cache'
 				}
 			})
-			.then(res => res.json())
+			.then( response => {
+      
+	      if (response.status >= 200 && response.status < 300) {
+	        return response
+	      } else {
+
+	        var error = new Error(response.statusText)
+	        error.response = response
+	        throw error
+	      }
+
+      })
+      .then(parseJSON)
 			.then(response => {	
 				// Convert ISO Date strings to Moment() date objects
 				const eventsOrigin = response.data.eventsByDateRange;
@@ -292,7 +309,7 @@ export function getEvents(dateRange, isAllDay) {
 			.catch( error => {
 				dispatch({
 					type: types.GET_EVENTS_ERROR,
-					payload: []
+					payload: error.message
 				})
 			})
 	}

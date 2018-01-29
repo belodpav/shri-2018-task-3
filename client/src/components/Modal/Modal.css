@@ -58,7 +58,9 @@
 .modal__button:last-child {
   margin-right: 0;
 }
-
+.modal__br_touch_false {
+  display: none;
+}
 @media (min-width: 1280px) {
   .modal { 
     position: absolute;
@@ -66,5 +68,8 @@
   }
   .modal__window {
     margin-bottom: auto;
+  }
+  .modal__br_touch_false {
+    display: inline;
   }
 }

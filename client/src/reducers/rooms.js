@@ -22,10 +22,21 @@ export default function rooms(state = initialState, action) {
       return {...state, fetching: true};
 
     case GET_ROOMS_SUCCESS:
-      return {...state, roomsByFloor: action.payload, isFetched: true, fetching: false};
+      return {
+        ...state,
+        roomsByFloor: action.payload,
+        isFetched: true,
+        fetching: false
+      };
 
     case GET_ROOMS_ERROR:
-      return {...state, roomsByFloor: [], errorMessage: action.payload, isFetched: false, fetching: false};
+      return {
+        ...state,
+        roomsByFloor: [],
+        errorMessage: action.payload,
+        isFetched: false,
+        fetching: false
+      };
     
     case SET_FLOORS:
       return {...state, floors: action.payload }

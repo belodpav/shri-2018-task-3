@@ -45,13 +45,18 @@ class AppContainer extends Component {
   render() {
     const { page } = this.props.page;
     const { isFetched } = this.props.rooms;
+    const isFetchedEvent = this.props.events.isFetched;
+    const errorMessageEvent = this.props.events.errorMessage;
     const { errorMessage } = this.props.rooms;
-    let error = this.checkErrorPattern(errorMessage);
-
+    let error = this.checkErrorPattern(errorMessage || errorMessageEvent);
+    const isFetchedInit = isFetched;
+    const isFetchedApp = isFetchedEvent;
+    
     return (
       <App
         page={page}
-        isFetched={isFetched}
+        isFetchedInit={isFetchedInit}
+        isFetched={isFetchedApp}
         errorMessage={error}
       />
     );
@@ -63,7 +68,8 @@ class AppContainer extends Component {
 function mapStateToProps (state) {
   return {
     page: state.page,
-    rooms: state.rooms
+    rooms: state.rooms,
+    events: state.events
   }
 }
 function mapDispatchToProps(dispatch) {

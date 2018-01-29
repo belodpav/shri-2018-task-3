@@ -8,7 +8,7 @@ const ModalRemove = (props) => {
     <div className="modal">
     <div className="modal__window">
       <span className="modal__icon icon icon_type_girl-close"></span>
-      <div className="modal__text">Встреча будет удалена безвозвратно</div>
+      <div className="modal__text">Встреча будет<br class="modal__br_touch_false" /> удалена безвозвратно</div>
       <div className="modal__buttons">
         <ButtonContainer onClick={props.onCancel} cls="modal__button">Отмена</ButtonContainer>
         <ButtonContainer onClick={props.onRemoveEvent} cls="modal__button">Удалить</ButtonContainer>

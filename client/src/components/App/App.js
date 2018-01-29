@@ -13,7 +13,7 @@ import {
 
 const App = (props) => {
 
-  const { page, isFetched, errorMessage } = props;
+  const { page, isFetchedInit, isFetched, errorMessage } = props;
   let appChild;
 
   switch(page) {
@@ -28,11 +28,22 @@ const App = (props) => {
       break;
   }
 
-  if (isFetched) {
+  if (isFetchedInit) {
     return (
       <div className="App">
         {appChild}
+        
+        {!isFetched && errorMessage ?
+          <div 
+            className={ "App__error-box" + (errorMessage ? " App__error-box_visible_true" : "") }
+          >
+            {errorMessage}
+          </div>
+          : ""
+        }
+        
       </div>
+
     );
   } else {
     return (
